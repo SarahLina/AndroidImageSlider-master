@@ -1,0 +1,87 @@
+ <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.msia.julina.HelpFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/logoapropos"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:id="@+id/helptitle"
+                android:layout_gravity="center"
+                android:text="@string/helptitle"
+                android:textAlignment="center"
+                android:textColor="@color/accent_material_dark" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/helptext"
+                android:layout_gravity="center"
+                android:text="Julina vous permet de faire vos achats en ligne simplement"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/helptext1"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="1. Choisissez la catégorie : Femmes , Hommes ou Enfants"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/helptext2"
+                android:layout_gravity="center"
+                android:text="2. Parcourez la liste des articles"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/helptext3"
+                android:layout_gravity="center"
+                android:text="3. Selectionnez l'article de votre choix"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/helptext4"
+                android:layout_gravity="center"
+                android:text="4. Visualisez les détails de l'article"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/helptext5"
+                android:layout_gravity="center"
+                android:text="5. Ajoutez le au panier"
+                />
+
+        </LinearLayout>
+
+    </FrameLayout>
+

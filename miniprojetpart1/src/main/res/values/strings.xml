@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name"></string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Réglages</string>
+    <string name="action_cart">Ajouter au panier</string>
+
+    <string name="apropos">Julina est une application de m-commerce creee par deux etudiants de l ESI à savoir AGOUN Juba et HAMMOUTENE Sarah lina
+        dans le cadre du mini projet du module Developpement Mobile </string>
+
+    <string name="helptitle">Comment utiliser Julina ?</string>
+
+    <string name="helptext"> Julina vous permet de faire vos achats en ligne simplement </string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

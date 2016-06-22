@@ -1,0 +1,102 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.mac.miniprojetpart1.ActivityFragment">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenue sur JULINA "
+            android:id="@+id/textView2"
+            android:textAlignment="center"
+            android:textColor="@color/accent_material_dark"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:singleLine="false"
+            android:layout_gravity="center_horizontal"
+           />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button6"
+            android:layout_gravity="right"
+            android:shadowRadius="3"
+            android:shadowDx="3"
+            android:shadowDy="2"
+            android:shadowColor="@android:color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="votre application de m-commerce "
+            android:id="@+id/textView3"
+            android:textAlignment="center"
+            android:textColor="@color/accent_material_dark"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_weight="0.14"
+            android:layout_gravity="center_horizontal" />
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.14"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_femmes"
+            android:onClick="femmes"
+            android:shadowRadius="3"
+            android:shadowDx="3"
+            android:shadowDy="2"
+            android:shadowColor="@android:color/black"
+            android:elevation="10dp"
+
+
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:layout_weight="0.14"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_hommes"
+            android:onClick="hommes"
+
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button4"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.14"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ic_enfants"
+            android:onClick="enfants"
+
+            />
+
+
+    </LinearLayout>
+
+</FrameLayout>

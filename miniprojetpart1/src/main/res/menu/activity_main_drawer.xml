@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <!-- -->
+    <item android:title="Accueil"
+        android:checkableBehavior="single">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_homme"
+                    android:icon="@drawable/ic_action_action_shopping_basket"
+                    android:title="Homme" />
+                <item
+                    android:id="@+id/nav_femme"
+                    android:icon="@drawable/ic_action_action_shopping_basket"
+                    android:title="Femme" />
+                <item
+                    android:id="@+id/nav_enfant"
+                    android:icon="@drawable/ic_action_action_shopping_basket"
+                    android:title="Enfant" />
+            </menu>
+
+    </item>
+
+
+    <group android:checkableBehavior="single">
+    <item android:title="Mes courses" >
+        <menu>
+            <item
+                android:id="@+id/nav_monpanier"
+                android:icon="@drawable/ic_action_action_shopping_basket"
+                android:title="Mon panier" />
+            <item
+                android:id="@+id/nav_cmd"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Mes commandes" />
+        </menu>
+
+    </item>
+
+    </group>
+
+    <item
+        android:id="@+id/nav_notification"
+        android:title="Notification" />
+
+    <item
+        android:id="@+id/nav_aide"
+        android:title="Aide" />
+    <item
+        android:id="@+id/nav_apropos"
+        android:title="A propos" />
+
+</menu>

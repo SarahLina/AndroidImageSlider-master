@@ -1,0 +1,34 @@
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.msia.julina.AproposFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/logoapropos"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/apropos"
+                android:layout_gravity="center"
+                android:text="@string/apropos"
+                android:textAlignment="center"
+                />
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+

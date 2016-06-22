@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mac.miniprojet.ListCategoriesFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/Title"
+        android:layout_gravity="left|top"
+        android:text="titre"
+        android:textColor="#ee6e73"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"/>
+
+
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/activatedBackgroundIndicator"
+
+            android:id="@+id/listView"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="10dp"
+            android:choiceMode="singleChoice"
+            android:dividerHeight="2dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+
+
+</RelativeLayout>
