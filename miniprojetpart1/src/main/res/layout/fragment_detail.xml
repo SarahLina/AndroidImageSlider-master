@@ -182,7 +182,7 @@ tools:context="com.example.mac.miniprojetpart1.DetailFragment">
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText2" />
+            android:id="@+id/editText2"/>
 
     </LinearLayout>
 

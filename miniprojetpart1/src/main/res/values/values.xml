@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_material_dark">#36506a</color>
-    <color name="accent_material_light">#f54c80</color>
+    <color name="primary_material_dark">#26a69a</color>
+    <color name="accent_material_light">#ee6e73</color>
     <color name="background_material_light">#fcfcfc</color>
     <color name="primary_dark_material_dark">#5c5757</color>
-    <color name="foreground_material_light">#ffd450</color>
-    <color name="accent_material_dark">#f54c80</color>
+    <color name="foreground_material_light">#5c5757</color>
+    <color name="accent_material_dark">#ee6e73</color>
 </resources>

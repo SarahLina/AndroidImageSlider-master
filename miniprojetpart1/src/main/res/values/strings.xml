@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">Julina</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Réglages</string>
@@ -14,8 +14,16 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-
+    <string name="menu_acceuil">Accueil</string>
+    <string name="menu_Femme">Femme</string>
+    <string name="menu_Homme">Homme</string>
+    <string name="menu_Enfant">Enfant</string>
+    <string name="menu_Panier">Mon panie</string>
+    <string name="menu_cmd">Mes commandes</string>
+    <string name="menu_Notification">Notification</string>
+    <string name="menu_Aide">Aide</string>
+    <string name="menu_propos">A propos</string>
+    <string name="menu_course">Mes course</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

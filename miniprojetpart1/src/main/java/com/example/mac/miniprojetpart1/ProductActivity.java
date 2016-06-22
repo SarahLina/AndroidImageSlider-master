@@ -30,15 +30,15 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
         // toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+*/
 
-        // add back arrow to toolbar
+       // add back arrow to toolbar
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

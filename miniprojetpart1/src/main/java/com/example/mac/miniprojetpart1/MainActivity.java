@@ -85,16 +85,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }else{
+
             MainFragment fragment = new MainFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                     .beginTransaction();
             fragmentTransaction.replace(R.id.fragment_contenairer,fragment);
             fragmentTransaction.commit();
             Toast.makeText(MainActivity.this, "Card", Toast.LENGTH_SHORT).show();
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
