@@ -63,7 +63,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     PRODUCT_IMAGES_COVER_1+" REFERENCES " + COVER_TABLE_NAME+"("+COVER_KEY+"), "+
                     PRODUCT_IMAGES_COVER_2+" REFERENCES " + COVER_TABLE_NAME+"("+COVER_KEY+"), "+
                     PRODUCT_IMAGES_COVER_3+" REFERENCES " + COVER_TABLE_NAME+"("+COVER_KEY+") "+
-                    ";";
+                    ");";
     ///MAZEL la foreign key
 
     /////-----------------------------------
