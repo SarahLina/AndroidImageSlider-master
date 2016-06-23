@@ -30,43 +30,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     CLIENT_TYPE_NAME+" TEXT);";
     */
     ///Cover table
-    public static final String COVER_KEY = "id_cover";
-    public static final String COVER_IMAGE = "image_cover";
-
-    public static final String COVER_TABLE_NAME = "Cover";
-
-
-    ///// query
-    public static final String COVER_TABLE_NAME_TABLE_NAME =
-            "CREATE TABLE " + COVER_TABLE_NAME + " (" +
-                    COVER_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COVER_IMAGE+" BLOB);";
-    /////-----------------------------------
 
     ///ProductImages table
-    public static final String PRODUCT_IMAGES_KEY = "id_productimage";
-    public static final String PRODUCT_IMAGES_DENSITY = "density_productimage";
-    public static final String PRODUCT_IMAGES_COVER_ICON = "iconcover_productimage";
-    public static final String PRODUCT_IMAGES_COVER_1 = "cover1_productimage";
-    public static final String PRODUCT_IMAGES_COVER_2 = "cover2_productimage";
-    public static final String PRODUCT_IMAGES_COVER_3 = "cover3_productimage";
-
-
-    public static final String PRODUCT_IMAGES_TABLE_NAME = "ProductImages";
-
-    ///// query
-    public static final String PRODUCT_IMAGES_TABLE_NAME_TABLE_NAME =
-            "CREATE TABLE " + PRODUCT_IMAGES_TABLE_NAME + " (" +
-                    PRODUCT_IMAGES_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT" +
-                    PRODUCT_IMAGES_DENSITY+"TEXT CHECK(" +PRODUCT_IMAGES_DENSITY+" IN ('ldpi','mdpi','hdpi','xhdpi','xxhdpi','xxxhdpi') ) DEFAULT 'ldpi', "+
-                    PRODUCT_IMAGES_COVER_ICON+" REFERENCES " + COVER_TABLE_NAME+"("+COVER_KEY+"), "+
-                    PRODUCT_IMAGES_COVER_1+" REFERENCES " + COVER_TABLE_NAME+"("+COVER_KEY+"), "+
-                    PRODUCT_IMAGES_COVER_2+" REFERENCES " + COVER_TABLE_NAME+"("+COVER_KEY+"), "+
-                    PRODUCT_IMAGES_COVER_3+" REFERENCES " + COVER_TABLE_NAME+"("+COVER_KEY+") "+
-                    ");";
-    ///MAZEL la foreign key
-
-    /////-----------------------------------
 
 
     //COLOR table
@@ -122,13 +87,37 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     PRODUCT_CLIENT+ " TEXT CHECK( " +PRODUCT_CLIENT+" IN ('enfant','femme','homme') ) DEFAULT 'enfant', "+
                     PRODUCT_CATEGORY+ " TEXTCHECK( " +PRODUCT_CATEGORY+" IN ('tous','top & t-shirt','robes et jupe','pantalons &jeans','accesoires','chaussueres') ) DEFAULT 'tous', "+
                     PRODUCT_PRICE+" INTEGER, "+
-                    PRODUCT_REF+" TEXT, "+
-                    PRODUCT_IMAGES_KEY + " REFERENCES " + PRODUCT_TABLE_NAME+"("+PRODUCT_KEY+")"+
+                    PRODUCT_REF+" TEXT"+
+
                     " );";
     ///MAZEL la foreign key
 
     /////-----------------------------------
 
+    public static final String PRODUCT_IMAGES_KEY = "id_productimage";
+    public static final String PRODUCT_IMAGES_DENSITY = "density_productimage";
+    public static final String PRODUCT_IMAGES_COVER_ICON = "iconcover_productimage";
+    public static final String PRODUCT_IMAGES_COVER_1 = "cover1_productimage";
+    public static final String PRODUCT_IMAGES_COVER_2 = "cover2_productimage";
+    public static final String PRODUCT_IMAGES_COVER_3 = "cover3_productimage";
+
+
+    public static final String PRODUCT_IMAGES_TABLE_NAME = "ProductImages";
+
+    ///// query
+    public static final String PRODUCT_IMAGES_TABLE_NAME_TABLE_NAME =
+            "CREATE TABLE " + PRODUCT_IMAGES_TABLE_NAME + " (" +
+                    PRODUCT_IMAGES_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    PRODUCT_KEY + " REFERENCES " + PRODUCT_TABLE_NAME+"("+PRODUCT_KEY+"),"+
+                    PRODUCT_IMAGES_DENSITY+"TEXT CHECK(" +PRODUCT_IMAGES_DENSITY+" IN ('ldpi','mdpi','hdpi','xhdpi','xxhdpi','xxxhdpi') ) DEFAULT 'ldpi', "+
+                    PRODUCT_IMAGES_COVER_ICON+" BLOB, "+
+                    PRODUCT_IMAGES_COVER_1+" BLOB, "+
+                    PRODUCT_IMAGES_COVER_2+" BLOB, "+
+                    PRODUCT_IMAGES_COVER_3+" BLOB, "+
+                    ");";
+    ///MAZEL la foreign key
+
+    /////-----------------------------------
 
 
 
