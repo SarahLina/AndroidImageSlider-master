@@ -120,7 +120,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     PRODUCT_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     PRODUCT_NAME+" TEXT," +
                     PRODUCT_CLIENT+ " TEXT CHECK( " +PRODUCT_CLIENT+" IN ('enfant','femme','homme') ) DEFAULT 'enfant', "+
-                    PRODUCT_CATEGORY+ " TEXTCHECK( " +PRODUCT_CATEGORY+" IN ('tous','top & t-shirt','robes et jupe','pantalons &jeans','accesoires','chaussueres') ) DEFAULT 'tous', "+
+                    PRODUCT_CATEGORY+ " TEXTCHECK( " +PRODUCT_CATEGORY+" IN ('Tous','Top & T-shirt','Robes & Jupes','Pantalons & Jeans','Accessoires','Chaussures','T-shirt','Shorts & Pantalons','Costumes','Vetements de sport','Pulls et gilets') ) DEFAULT 'tous', "+
                     PRODUCT_PRICE+" INTEGER, "+
                     PRODUCT_REF+" TEXT, "+
                     PRODUCT_IMAGES_KEY + " REFERENCES " + PRODUCT_TABLE_NAME+"("+PRODUCT_KEY+")"+

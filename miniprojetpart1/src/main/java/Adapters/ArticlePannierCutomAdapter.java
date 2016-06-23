@@ -50,9 +50,7 @@ public class ArticlePannierCutomAdapter extends BaseAdapter  {
         TextView textNom = (TextView) convertView.findViewById(R.id.nom);
         TextView textCouleur = (TextView) convertView.findViewById(R.id.couleur);
         TextView textTaille = (TextView) convertView.findViewById(R.id.taille);
-        NumberPicker np = (NumberPicker) convertView.findViewById(R.id.numberPicker);
-        np.setMinValue(0);
-        np.setMaxValue(10);
+
         //coverIcon.setImageResource(articleList.get(position).getIconCover());
         coverIcon.setImageResource(R.drawable.ic_tshirt1);
         textNom.setText(articleList.get(position).getNom());

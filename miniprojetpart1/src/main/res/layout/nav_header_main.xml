@@ -5,25 +5,31 @@
     android:background="@drawable/ic_matnav"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="5dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-         />
+    <ImageButton style="@style/AppTheme"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="New Button"
+        android:id="@+id/moins"
+        android:elevation="5dp"
+        android:background="@drawable/circle2"
+        android:padding="10dp"
+
+        />
+
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="169dp"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Hammoutene Saralina"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:text="Hammoutene Sarah Lina"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_gravity="right" />
 
 
 
