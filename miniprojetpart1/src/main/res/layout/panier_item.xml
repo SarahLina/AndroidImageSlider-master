@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="wrap_content" android:layout_height="match_parent"
     android:background="#ffffff"
+
     >
 
     <LinearLayout
@@ -13,6 +14,7 @@
         android:id="@+id/linearLayout"
         android:weightSum="1"
         android:background="@drawable/mydrawable"
+        android:paddingBottom="20dp"
         android:elevation="2dp"
         android:padding="5dp"
         >
@@ -51,14 +53,6 @@
                 android:text="test"
                 android:textColor="#364F6B" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/prix"
-                android:layout_below="@+id/couleur"
-                android:layout_toRightOf="@+id/articleIcon"
-                android:text="test"
-                android:textColor="#364F6B" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,35 +63,91 @@
                 android:text="test"
                 android:textColor="#364F6B" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/prix"
+                android:layout_below="@+id/taille"
+                android:layout_toRightOf="@+id/articleIcon"
+                android:text="test"
+                android:textColor="#364F6B" />
+
 
 
 
         </LinearLayout>
 
-        <NumberPicker
 
+
+
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/numberPicker"
-            android:layout_alignParentTop="true"
-
-            android:layout_toLeftOf="@+id/supprimer"
-            android:layout_alignBottom="@+id/taille"
-            android:scaleX=".8"
-            android:scaleY=".8"/>
+            android:layout_height="match_parent">
 
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp">
 
-        <ImageButton style="@style/AppTheme"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            android:text="New Button"
-            android:id="@+id/delete"
-            android:elevation="5dp"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
-             />
 
+
+            <ImageButton style="@style/AppTheme"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:text="New Button"
+                android:id="@+id/moins"
+                android:elevation="5dp"
+                android:src="@android:drawable/ic_menu_add"
+                android:background="@drawable/circle"
+
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/quantity"
+                android:text="test"
+                android:textColor="#364F6B"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+
+
+
+            <ImageButton style="@style/AppTheme"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:text="New Button"
+                android:id="@+id/delete"
+                android:elevation="5dp"
+                android:src="@android:drawable/ic_menu_more"
+                android:background="@drawable/circle" />
+
+            </LinearLayout>
+
+            <Button style="@style/AppTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="3dp"
+                android:text="Supprimer"
+                android:textColor="#ffffff"
+                android:id="@+id/plus"
+                android:elevation="5dp"
+                android:drawableLeft="@android:drawable/presence_offline"
+                android:background="@drawable/myrect"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"/>
+
+        </LinearLayout>
 
 
     </LinearLayout>

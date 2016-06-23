@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.mac.miniprojetpart1.ActivityFragment">
 
 
@@ -15,8 +16,8 @@
 
 
         <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_width="439dp"
             android:layout_height="wrap_content"
             android:text="Bienvenue sur JULINA "
             android:id="@+id/textView2"
@@ -25,10 +26,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:singleLine="false"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:background="@color/accent_material_light" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="votre application de m-commerce "
             android:id="@+id/textView3"
@@ -37,7 +39,8 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:layout_weight="0.14"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:background="@color/accent_material_light" />
 
 
 
@@ -50,6 +53,13 @@
             android:layout_margin="10dp"
             android:background="@drawable/ic_femmes"
             android:onClick="femmes"
+            android:clipToPadding="false"
+            android:outlineProvider="bounds"
+            android:hardwareAccelerated="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:stateListAnimator="@drawable/button_state_list_anim_material"
+
             />
 
         <Button
@@ -60,6 +70,12 @@
             android:layout_margin="10dp"
             android:background="@drawable/ic_hommes"
             android:onClick="hommes"
+            android:clipToPadding="false"
+            android:outlineProvider="bounds"
+            android:hardwareAccelerated="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:stateListAnimator="@drawable/button_state_list_anim_material"
 
             />
 
@@ -73,6 +89,11 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/ic_enfants"
             android:onClick="enfants"
+            android:clipToPadding="false"
+            android:outlineProvider="bounds"
+            android:hardwareAccelerated="true"
+            android:layout_marginRight="10dp"
+            android:stateListAnimator="@drawable/button_state_list_anim_material"
 
             />
 
