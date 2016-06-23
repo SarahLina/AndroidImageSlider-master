@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.mac.miniprojetpart1.MainFragment">
 
 
@@ -12,39 +13,58 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Mon Panier"
                 android:id="@+id/textView9"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
-                android:textColor="#ee6e73" />
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:background="@color/accent_material_light"
+                />
 
             <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="419dp"
+                android:layout_width="match_parent"
+                android:layout_height="390dp"
                 android:id="@+id/listView"
                 android:layout_gravity="left|top"
+                android:layout_margin="10dp"
+                android:outlineProvider="bounds"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="10.0sp"
+                android:clipToPadding="false"
+
                 />
 
 
         </LinearLayout>
 
         <Button
-            android:layout_width="200dp"
-            android:layout_height="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:text="Valider"
             android:id="@+id/button5"
             android:drawableRight="@android:drawable/ic_menu_send"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|center_horizontal"
-            android:background="#26a69a"
-            android:textColor="#ffffff" />
+            android:background="@drawable/myrect"
+            android:textColor="@color/accent_material_light"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_margin="15dp"
+            android:elevation="20dp"
+            android:translationZ="10dp"
+            style="@style/Widget.AppCompat.Button.Colored" />
 
     </RelativeLayout>
 
