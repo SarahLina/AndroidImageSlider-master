@@ -1,1 +1,1 @@
-include ':library', ':app', ':miniprojetpart1'
+include ':library', ':app', ':miniprojetpart1', ':backend'
