@@ -43,7 +43,7 @@ public class DataBaseService {
         Connection conn = null;
         PreparedStatement pst = null;
 
-        String query = "select * from Product ";
+        String query = "select * from Product";
 
         try {
             conn = connecter();
