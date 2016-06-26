@@ -22,8 +22,11 @@ sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
-  appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.28'
-  compile 'javax.servlet:servlet-api:2.5'
+    appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.28'
+    compile 'javax.servlet:servlet-api:2.5'
+    compile files('lib/commons-codec-1.10.jar')
+    compile files('lib/gson-2.3.1.jar')
+    compile files('lib/mysql-connector-java-5.1.23-bin.jar')
 }
 
 appengine {
@@ -32,3 +35,4 @@ appengine {
     oauth2 = true
   }
 }
+
