@@ -9,6 +9,7 @@ import java.util.List;
 public class Product implements Serializable {
     public static String categorie_current;
 
+    private int id_product;
     private String category;
     private String client;      //Hommes ou femmes ou enfants
     private String name;
@@ -25,6 +26,14 @@ public class Product implements Serializable {
 
     public static void setCategorie_current(String categorie_current) {
         Product.categorie_current = categorie_current;
+    }
+
+    public int getId_product() {
+        return id_product;
+    }
+
+    public void setId_product(int id_product) {
+        this.id_product = id_product;
     }
 
     public String getCategory() {
