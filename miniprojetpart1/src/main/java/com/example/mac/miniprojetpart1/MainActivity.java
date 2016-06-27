@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initBase();
+        //initBase();
         // set the fragment
         /*MainFragment fragment = new MainFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
@@ -64,6 +64,12 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initBase();
     }
 
     @Override
@@ -195,7 +201,7 @@ public class MainActivity extends AppCompatActivity
         // product.setImg(R.drawable.ft81);
             product.setPrice(39734);
 
-            product.setPrice(39734);
+
             product.setRef("zjhefj342P9d8");
             product.setTypeClient("femme");
 
@@ -214,7 +220,11 @@ public class MainActivity extends AppCompatActivity
 
             product.setTab_img(im);*/
             ProductRepo productRepo = new ProductRepo(this);
+
+
             productRepo.addProduct(product);
+
+
 
             FullProductRepo fullProductRepo = new FullProductRepo(this);
             if (fullProductRepo.getIdFullProd(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"vert","XS")==-1){
@@ -233,7 +243,10 @@ public class MainActivity extends AppCompatActivity
             product.setPrice(1200);
             product.setRef("hefj3sasP9s8");
             product.setTypeClient("homme");
-           productRepo.addProduct(product);
+       // if (productRepo.getProductsByRef("hefj3sasP9s8").getId_product()==-1){
+
+            productRepo.addProduct(product);
+        //}
         if (fullProductRepo.getIdFullProd(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS")!=0){
             fullProductRepo.addFullProduct(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS");
         }

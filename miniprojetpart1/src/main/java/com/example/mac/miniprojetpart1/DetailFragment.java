@@ -2,6 +2,7 @@ package com.example.mac.miniprojetpart1;
 
 import android.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
@@ -69,12 +70,14 @@ public  class DetailFragment extends Fragment implements BaseSliderView.OnSlider
              this.spinnersize= (Spinner) view.findViewById(R.id.taillespiner);
              this.spinnercolor= (Spinner) view.findViewById(R.id.couleurspinner);
             this.quantite = (EditText) view.findViewById(R.id.quantite);
-            Button ajouter = (Button) view.findViewById(R.id.ajouter);
+            final Button ajouter = (Button) view.findViewById(R.id.ajouter);
+           // Intent intent = new Intent(null,MainActivity.class);
             ajouter.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
+                    System.out.println("------ajouter  dagui----");
                     CardLineRepo cardLineRepo = new CardLineRepo(v.getContext());
                     FullProduct fullProduct = new FullProduct();
                     ProductRepo productRepo = new ProductRepo(v.getContext());
@@ -84,6 +87,9 @@ public  class DetailFragment extends Fragment implements BaseSliderView.OnSlider
                     fullProduct.setColor(spinnercolor.getSelectedItem().toString());//spin-------
                     //fullProduct.setQuantity(quantite.getText().toString().);////parse in int
                     cardLineRepo.addCardLineRepo(fullProduct,Integer.parseInt(quantite.getText().toString()));
+
+                   // Intent intent = new Intent(null,MainActivity.class);
+                    //startActivity(intent);
 
                 }
             });

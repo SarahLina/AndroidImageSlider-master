@@ -86,14 +86,24 @@ public class ProductRepo {
         String query = "select * from Product where ref_product like ?";
         Cursor cursor = db.rawQuery(query,new String[]{ref});
         //cursor est une liste
-        cursor.moveToFirst();
         Product product = new Product();
+        if(cursor.moveToFirst()){
+
         product.setId_product(cursor.getInt(0));
         product.setName(cursor.getString(1));
         product.setTypeClient(cursor.getString(2));
         product.setCategorie(cursor.getString(3));
         product.setPrice(cursor.getFloat(4));
         product.setRef(cursor.getString(5));
+        }else{
+            product.setId_product(-1);
+            product.setName("");
+            product.setTypeClient("");
+            product.setCategorie("");
+            product.setPrice(-1);
+            product.setRef("");
+        }
+
         /*
         list.add(product);
         cursor.moveToNext();

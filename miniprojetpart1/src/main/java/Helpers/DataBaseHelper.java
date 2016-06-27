@@ -137,7 +137,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     /////-----------------------------------
 
     //public static final String PRODUCT_IMAGES_KEY = "id_productimage";
-    public static final String PRODUCT_IMAGES_DENSITY = "density_productimage";
+    /*public static final String PRODUCT_IMAGES_DENSITY = "density_productimage";
     public static final String PRODUCT_IMAGES_COVER_ICON = "iconcover_productimage";
     public static final String PRODUCT_IMAGES_COVER_1 = "cover1_productimage";
     public static final String PRODUCT_IMAGES_COVER_2 = "cover2_productimage";
@@ -150,11 +150,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String PRODUCT_IMAGES_TABLE_NAME_TABLE_NAME =
             "CREATE TABLE " + PRODUCT_IMAGES_TABLE_NAME + " ( " +
                     PRODUCT_KEY + " REFERENCES " + PRODUCT_TABLE_NAME+"("+PRODUCT_KEY+"),"+
-                    PRODUCT_IMAGES_COVER_ICON+" BLOB, "+
-                    PRODUCT_IMAGES_COVER_1+" BLOB, "+
-                    PRODUCT_IMAGES_COVER_2+" BLOB, "+
-                    PRODUCT_IMAGES_COVER_3+" BLOB"+
-                    ");";
+                    PRODUCT_IMAGES_COVER_ICON+" TEXT, "+
+                    PRODUCT_IMAGES_COVER_1+" TEXT, "+
+                    PRODUCT_IMAGES_COVER_2+" TEXT, "+
+                    PRODUCT_IMAGES_COVER_3+" TEXT"+
+                    ");";*/
     ///MAZEL la foreign key
 
     public DataBaseHelper (Context context) {
@@ -167,7 +167,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         /// on crééer toute les tabeles au niveau de cette method
         db.execSQL(PRODUCT_TABLE_NAME_TABLE_NAME);
-        db.execSQL(PRODUCT_IMAGES_TABLE_NAME_TABLE_NAME);
+      //  db.execSQL(PRODUCT_IMAGES_TABLE_NAME_TABLE_NAME);
         db.execSQL(CARD_LINE_TABLE_NAME_TABLE_NAME);
         db.execSQL(FULL_PRODUCT_TABLE_NAME_TABLE_NAME);
 
@@ -177,7 +177,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         /// on crééer toute les tabeles au niveau de cette methode
         db.execSQL  ("DROP TABLE IF EXISTS "+PRODUCT_TABLE_NAME+" ;");
-        db.execSQL  ("DROP TABLE IF EXISTS "+PRODUCT_IMAGES_TABLE_NAME+" ;");
+       // db.execSQL  ("DROP TABLE IF EXISTS "+PRODUCT_IMAGES_TABLE_NAME+" ;");
         db.execSQL  ("DROP TABLE IF EXISTS "+CARD_LINE_TABLE_NAME+" ;");
         db.execSQL  ("DROP TABLE IF EXISTS "+FULL_PRODUCT_TABLE_NAME+" ;");
         onCreate(db);

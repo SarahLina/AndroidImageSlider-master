@@ -40,7 +40,7 @@ public class CardLineRepo   {
         contentValues.put("id_fullKey",fullProductRepo.getIdFullProd(fullProduct.getProduct().getId_product(),fullProduct.getColor(),fullProduct.getSize()));
         contentValues.put("quantity_line_card",quantite);
 
-        db.insert("FullProduct",null,contentValues);
+        db.insert("Card_line",null,contentValues);
         db.close();
     }
     public List<ArticlePannier> getCardLine(){
