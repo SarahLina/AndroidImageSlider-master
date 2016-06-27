@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.msia.julina.AproposFragment;
 import com.example.msia.julina.HelpFragment;
+import com.example.msia.julina.LoginActivity;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ import Metier.Product;
 import Repository.CardLineRepo;
 import Repository.FullProductRepo;
 import Repository.ProductRepo;
+import Services.GetDisponibiliteTask;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -315,6 +317,14 @@ public class MainActivity extends AppCompatActivity
             productList.add(product);*/
 
 
+    }
+
+    public void AjouterPanier (View view)
+    {
+       //new GetDisponibiliteTask(this).execute(1,"bleu","XS", 2 );
+
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
     }
 
 

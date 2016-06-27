@@ -63,6 +63,7 @@ public class DataBaseService {
                 while (!rs.isAfterLast()) {
                     FullProduct fullProduct= new FullProduct();
                     Product product = new Product();
+                    product.setId_product(rs.getInt("id_product"));
                     product.setRef(rs.getString("ref_product"));
                     product.setPrice(rs.getFloat("price_product"));
                     product.setCategory(rs.getString("category_product"));
@@ -319,7 +320,6 @@ public class DataBaseService {
 
 
         qt = getDispo(id_product,color,size,quantity);
-        System.out.print(qt);
 
         if (qt>=quantity) {
 
@@ -349,7 +349,6 @@ public class DataBaseService {
 
         return i;
     }
-
 
     public int getDispo (String id_product, String color, String size, int quantity)
     {
@@ -429,6 +428,42 @@ public class DataBaseService {
         }
         return cmdList;
 
+    }
+
+
+    public int login (String username, String password)
+    {
+        Connection conn= connecter();
+        String query= "Select * from User where username=? and password=?";
+        PreparedStatement pst= null;     //Prepared statement sont utilisé pour les requestes paramétrées
+        int i =-1;
+
+        try {
+            conn = connecter();
+            pst = conn.prepareStatement(query);
+            pst.setString(1, username);
+            pst.setString(2, password);
+
+            ResultSet rs = pst.executeQuery();
+            if (rs.first()) {
+                i=1;
+                while (!rs.isAfterLast()) {
+                    rs.next();
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (pst!=null) try {
+            pst.close();
+            if (conn!=null) conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return i;
     }
 
 }

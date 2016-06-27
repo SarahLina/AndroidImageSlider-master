@@ -22,7 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-
         android:text="Username"
         android:id="@+id/textView8"
         android:layout_marginTop="60dp"
@@ -35,7 +34,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/username"
         android:textColor="#ffffff"
         android:layout_below="@+id/textView8"
         android:layout_alignLeft="@+id/textView8"
@@ -48,11 +47,11 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText3"
+        android:id="@+id/password"
         android:textColor="#ffffff"
-        android:layout_below="@+id/password"
-        android:layout_alignLeft="@+id/password"
-        android:layout_alignStart="@+id/password"
+        android:layout_below="@+id/mdp"
+        android:layout_alignLeft="@+id/mdp"
+        android:layout_alignStart="@+id/mdp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -61,28 +60,27 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Mot de passe"
-        android:id="@+id/password"
+        android:id="@+id/mdp"
         android:textColor="#ffffff"
-        android:layout_below="@+id/editText"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
+        android:layout_below="@+id/username"
+        android:layout_alignLeft="@+id/username"
+        android:layout_alignStart="@+id/username" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Connexion"
         android:id="@+id/login"
         android:elevation="20dp"
         android:translationZ="10dp"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="42dp"
-        android:layout_alignRight="@+id/editText3"
-        android:layout_alignEnd="@+id/editText3"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
+        android:layout_below="@+id/mdp"
+        android:layout_marginTop="60dp"
+        android:layout_alignLeft="@+id/mdp"
+        android:layout_alignStart="@+id/mdp"
         android:background="@drawable/myrect2"
-        />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -99,6 +97,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="@drawable/myrect2"
         android:layout_marginTop="20dp"
+        android:onClick="login"
          />
 
     <TextView

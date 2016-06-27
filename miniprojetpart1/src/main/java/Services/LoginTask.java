@@ -3,45 +3,44 @@ package Services;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import Metier.FullProduct;
-import Repository.ProductRepo;
 
 /**
  * Created by mac on 27/06/16.
  */
-public class GetFullProductTask extends AsyncTask<Object,Void,String> {
-        private Context context;
-        ProgressDialog pd;
-        ProductRepo productRepo;
+public class LoginTask extends AsyncTask<Object,Void,String> {
+    private Context context;
+    ProgressDialog pd;
+
+
+    public LoginTask(Context context) {
+        this.context = context;
+    }
 
     @Override
     protected void onPreExecute() {
-        // Création et affichage du ProgressDialog
         pd = new ProgressDialog(context);
         pd.setTitle("Merci de patienter...");
         pd.setMessage("Chargement...");
         pd.show();
     }
 
+
+
+
     @Override
     protected String doInBackground(Object... params) {
         StringBuilder result = new StringBuilder();
         String data;
         try {
-            URL url = new URL("http://192.168.1.6:8080/GetFullProduct?density="+params[0]);
+            URL url = new URL("http://10.0.19.102:8080/Login?username="+params[0]+"&password="+params[1]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Attendre 5 secondes max pour établir la connexion
             conn.setConnectTimeout(5000);
@@ -63,24 +62,13 @@ public class GetFullProductTask extends AsyncTask<Object,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         pd.dismiss();
-        productRepo=new ProductRepo(this.context);
-        if (!s.equals("")) {
-
-            List <FullProduct>  fullProductList=new ArrayList<>();
-            FullProduct[] fullProducts= new Gson().fromJson(s, FullProduct[].class);
-            fullProductList = Arrays.asList(fullProducts);
-
-
-            //Enregistrement dans la base
-
-
-
+        if(s.equals("1")) {
+            Toast.makeText(context, "sucess", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(context, "Une erreur s'est produite", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
         }
     }
 
 
 }
-

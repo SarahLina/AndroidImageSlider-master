@@ -7,7 +7,7 @@ public class FullProduct {
     Product product;
     String size;
     String color;
-   // int quantity;//// quantite dipo
+    int quantity;//// quantite dipo
 
     public Product getProduct() {
         return product;
@@ -33,11 +33,14 @@ public class FullProduct {
         this.color = color;
     }
 
-   /* public Integer getQuantity() {
-        return quantity;
-    }*/
 
-    /*public void setQuantity(Integer quantity) {
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }*/
+    }
 }
+

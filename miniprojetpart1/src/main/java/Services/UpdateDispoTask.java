@@ -38,7 +38,7 @@ public class UpdateDispoTask extends AsyncTask<Object,Void,String> {
         StringBuilder result = new StringBuilder();
         String data;
         try {
-            URL url = new URL("http://192.168.1.6:8080/UpdateDisponilibite?id_product="+params[0]+"&color="+params[1]+"&size="+params[2]+"&quantity="+params[3]);
+            URL url = new URL("http://10.0.19.102:8080/UpdateDisponilibite?id_product="+params[0]+"&color="+params[1]+"&size="+params[2]+"&quantity="+params[3]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Attendre 5 secondes max pour établir la connexion
             conn.setConnectTimeout(5000);
