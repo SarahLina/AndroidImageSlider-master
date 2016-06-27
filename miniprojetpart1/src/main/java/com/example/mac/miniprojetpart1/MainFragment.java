@@ -13,6 +13,8 @@ import java.util.List;
 
 import Adapters.ArticlePannierCutomAdapter;
 import Metier.ArticlePannier;
+import Services.GetDisponibiliteTask;
+import Services.UpdateDispoTask;
 
 
 /**
@@ -29,10 +31,16 @@ public class MainFragment extends Fragment {
 
 
         View v = inflater.inflate(R.layout.fragment_main,null);
+
+       // new UpdateDispoTask(getActivity()).execute(1,"bleu","XL", 2);
+
+
+
         ListView listView = (ListView) v.findViewById(R.id.listView);
         cutomAdapter = new ArticlePannierCutomAdapter(getActivity(),getArticleList());
         listView.setAdapter(cutomAdapter);
         return v;
+
     }
     public List<ArticlePannier> getArticleList() {
         String[] listSummary = {"Article1","Article2"};
@@ -62,5 +70,11 @@ public class MainFragment extends Fragment {
 
         return articlePannierList;
     }
+
+    public void AjouterPanier (View view)
+    {
+        new GetDisponibiliteTask(getActivity()).execute(1,"bleu","XS", 2 );
+    }
+
 
 }

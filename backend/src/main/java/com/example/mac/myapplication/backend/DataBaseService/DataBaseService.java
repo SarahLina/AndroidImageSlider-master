@@ -1,10 +1,12 @@
 package com.example.mac.myapplication.backend.DataBaseService;
 
+import com.example.mac.myapplication.backend.Models.Cmd;
 import com.example.mac.myapplication.backend.Models.Cmd_line;
 import com.example.mac.myapplication.backend.Models.FullProduct;
 import com.example.mac.myapplication.backend.Models.ObjectCard;
 import com.example.mac.myapplication.backend.Models.Product;
 import com.example.mac.myapplication.backend.Models.User;
+import com.sun.javafx.binding.StringFormatter;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -28,7 +30,8 @@ public class DataBaseService {
     public static final String username = "root";
     public static final String password = "root";
 
-    public Connection connecter() {
+    public Connection connecter()
+    {
 
         Connection con = null;
         try {
@@ -42,8 +45,8 @@ public class DataBaseService {
         return con;
     }
 
-
-    public List<FullProduct> getListFullProduct(String density)  {
+    public List<FullProduct> getListFullProduct(String density)
+    {
         List<FullProduct> listProducts = new ArrayList<FullProduct>();
         Connection conn = null;
         PreparedStatement pst = null;
@@ -94,18 +97,18 @@ public class DataBaseService {
 
     }
 
-
-    public List<Product> getListProduct()  {
+    public List<Product> getListProduct(int id_product)
+    {
         List<Product> listProducts = new ArrayList<Product>();
         Connection conn = null;
         PreparedStatement pst = null;
 
-        String query = "select * from Product ";
+        String query = "select * from Product where id_product=?";
 
         try {
             conn = connecter();
             pst = conn.prepareStatement(query);
-            //pst.setString(1,density);
+            pst.setInt(1,id_product);
             ResultSet rs = pst.executeQuery();
 
             if (rs.first()) {
@@ -116,8 +119,6 @@ public class DataBaseService {
                     product.setCategory(rs.getString("category_product"));
                     product.setClient(rs.getString("client_product"));
                     product.setName(rs.getString("name_product"));
-
-
                     listProducts.add(product);
                     rs.next();
                 }
@@ -136,7 +137,6 @@ public class DataBaseService {
         return listProducts;
 
     }
-
 
     public int addCmd(ObjectCard objectCard)
     {
@@ -243,7 +243,12 @@ public class DataBaseService {
             pst.setInt(1,id_cmd);
             pst.setString(2, username);
             ResultSet rs = pst.executeQuery();
-            etat =rs.getString(1);
+            if (rs.first()) {
+                while (!rs.isAfterLast()) {
+                    etat =rs.getString(1);
+                    rs.next();
+                }
+            }
 
 
         } catch (SQLException e) {
@@ -267,6 +272,7 @@ public class DataBaseService {
         PreparedStatement pst = null;
         Boolean dispo = false;
         String query = "select quantity from FullProduct where id_product=? and color=? and size=?";
+        int quantite=0;
 
         conn = connecter();
         try {
@@ -276,8 +282,13 @@ public class DataBaseService {
             pst.setString(3, size);
 
             ResultSet rs = pst.executeQuery();
-            String qt =rs.getString(1);
-            int quantite = Integer.parseInt(qt);
+
+            if (rs.first()) {
+                while (!rs.isAfterLast()) {
+                    quantite =rs.getInt("quantity");
+                    rs.next();
+                }
+            }
 
             if(quantite >= quantity) dispo=true;
             else dispo=false;
@@ -298,16 +309,55 @@ public class DataBaseService {
 
     }
 
-    public int updateDispo (String id_product, String color, String size, int quantity)
+    public int updateDispo(String id_product, String color, String size, int quantity)
     {
         Connection connection= connecter();
         String query= "UPDATE FullProduct SET quantity=? WHERE id_product=? and color=? and size=?";
         PreparedStatement st= null;     //Prepared statement sont utilisé pour les requestes paramétrées
         int i =-1;
-        String qt = null;
+        int qt = 0;
 
 
-        String query2 = "select quantity from FullProduct where id_product=? and color=? and size=?";
+        qt = getDispo(id_product,color,size,quantity);
+        System.out.print(qt);
+
+        if (qt>=quantity) {
+
+            try {
+                st = connection.prepareStatement(query);
+                int nvquantite = qt - quantity;
+                st.setInt(1, nvquantite);
+                st.setString(2, id_product);
+                st.setString(3, color);
+                st.setString(4, size);
+                i = st.executeUpdate();
+                i=1;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            if (st != null) try {
+                st.close();
+                if (connection != null) connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        return i;
+    }
+
+
+    public int getDispo (String id_product, String color, String size, int quantity)
+    {
+        Connection connection= connecter();
+        PreparedStatement st= null;     //Prepared statement sont utilisé pour les requestes paramétrées
+        int qt = 0;
+
+        String query = "select quantity from FullProduct where id_product=? and color=? and size=?";
         Connection conn = connecter();
         PreparedStatement pst = null;
 
@@ -318,7 +368,13 @@ public class DataBaseService {
             pst.setString(3, size);
 
             ResultSet rs = pst.executeQuery();
-            qt =rs.getString(1);
+            if (rs.first()) {
+                while (!rs.isAfterLast()) {
+                    qt =rs.getInt("quantity");
+                    rs.next();
+                }
+                }
+            System.out.print(qt);
 
 
         } catch (SQLException e) {
@@ -332,32 +388,47 @@ public class DataBaseService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return qt;
+    }
 
+    public List<Cmd> getListCmd(String username)
+    {
+        List<Cmd> cmdList = new ArrayList<Cmd>();
+        Connection conn = null;
+        PreparedStatement pst = null;
 
-
+        String query = "select * from Cmd where username=?";
 
         try {
-            st = connection.prepareStatement(query);
-            int nvquantite = Integer.parseInt(qt);
-            nvquantite= nvquantite-quantity;
-            st.setInt(1,nvquantite);
-            st.setString(2,id_product);
-            st.setString(3,color);
-            st.setString(4, size);
-            i= st.executeUpdate();
+            conn = connecter();
+            pst = conn.prepareStatement(query);
+            pst.setString(1,username);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.first()) {
+                while (!rs.isAfterLast()) {
+                    Cmd cmd= new Cmd();
+                    cmd.setNameCmd(rs.getString("id_cmd"));
+                    cmd.setDate(rs.getString("date_cmd"));
+                    cmd.setEtat(rs.getString("state"));
+
+                    cmdList.add(cmd);
+                    rs.next();
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        if (st!=null) try {
-            st.close();
-            if (connection!=null) connection.close();
-
+        try {
+            if (pst!=null) pst.close();
+            if(conn!=null) conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return cmdList;
 
-        return i;
     }
 
 }

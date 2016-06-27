@@ -16,8 +16,11 @@ import android.widget.Toast;
 
 import com.example.msia.julina.AproposFragment;
 import com.example.msia.julina.HelpFragment;
+import com.example.msia.julina.LoginActivity;
 
 import Metier.Product;
+import Services.GetDisponibiliteTask;
+import Services.UpdateDispoTask;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -95,6 +98,13 @@ public class MainActivity extends AppCompatActivity
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void AjouterPanier (View view)
+    {
+       // new UpdateDispoTask(this).execute(1,"bleu","XS", 2 );
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
