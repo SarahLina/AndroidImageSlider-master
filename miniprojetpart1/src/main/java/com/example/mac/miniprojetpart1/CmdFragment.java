@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.mac.miniprojetpart1.R;
 
@@ -17,6 +18,8 @@ import Adapters.ArticlePannierCutomAdapter;
 import Metier.ArticlePannier;
 import Metier.Cmd;
 import Adapters.CmdCustomAdapter;
+import Services.GetListCmdTask;
+import util.UtilService;
 
 public class CmdFragment extends Fragment {
     CmdCustomAdapter cutomAdapter ;
@@ -42,11 +45,19 @@ public class CmdFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View v = inflater.inflate(R.layout.fragment_cmd,null);
-        ListView listView = (ListView) v.findViewById(R.id.listView);
-        cutomAdapter = new CmdCustomAdapter(getActivity(),getCmdList());
-        listView.setAdapter(cutomAdapter);
+      //  ListView listView = (ListView) v.findViewById(R.id.listView);
+      //  cutomAdapter = new CmdCustomAdapter(getActivity(),getCmdList());
+      //  listView.setAdapter(cutomAdapter);
+
+        if (new UtilService().checkNetwork(getActivity())) {
+            new GetListCmdTask(getActivity()).execute(23);
+        } else {
+            Toast.makeText(getActivity(), "Aucune connexion", Toast.LENGTH_SHORT).show();
+        }
+
         return v;
     }
+
     public List<Cmd> getCmdList() {
         String[] listSummary = {"Article1","Article2"};
         //String[] listSummary = getResources().getStringArray(R.array.summary);

@@ -23,4 +23,65 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>GetProduct</servlet-name>
+        <servlet-class>com.example.mac.myapplication.backend.Servlet.GetProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetProduct</servlet-name>
+        <url-pattern>/GetProduct</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AddCmd</servlet-name>
+        <servlet-class>com.example.mac.myapplication.backend.Servlet.AddCmdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCmd</servlet-name>
+        <url-pattern>/AddCmd</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>GetDisponibilite</servlet-name>
+        <servlet-class>com.example.mac.myapplication.backend.Servlet.GetDisponibiliteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetDisponibilite</servlet-name>
+        <url-pattern>/GetDisponibilite</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>GetStateCmd</servlet-name>
+        <servlet-class>com.example.mac.myapplication.backend.Servlet.GetStateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetStateCmd</servlet-name>
+        <url-pattern>/GetStateCmd</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>UpdateDisponilibite</servlet-name>
+        <servlet-class>com.example.mac.myapplication.backend.Servlet.UpdateDispoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateDisponilibite</servlet-name>
+        <url-pattern>/UpdateDisponilibite</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCmd</servlet-name>
+        <servlet-class>com.example.mac.myapplication.backend.Servlet.GetListCmdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCmd</servlet-name>
+        <url-pattern>/GetCmd</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
