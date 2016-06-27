@@ -19,7 +19,6 @@ public class FullProductRepo {
     private DataBaseHelper dataBaseHelper;
     private Context context;
     private SQLiteDatabase db;
-    private ProductRepo productRepo ;
     public FullProductRepo(Context context){
         dataBaseHelper = new DataBaseHelper(context);
         this.context=context;
@@ -38,16 +37,24 @@ public class FullProductRepo {
         String query = "select * from FullProduct where id_fullKey=?";
         Cursor cursor = db.rawQuery(query,new String[]{Integer.toString(idFullkey)});
         FullProduct fullProduct = new FullProduct();
-        fullProduct.setProduct(productRepo.getProductsById(cursor.getInt(0)));
-        fullProduct.setColor(cursor.getString(1));
-        fullProduct.setSize(cursor.getString(2));
+        ProductRepo productRepo = new ProductRepo(this.context);
+        if(cursor.moveToFirst()){
+        System.out.println("there is only one full prod");
+        fullProduct.setProduct(productRepo.getProductsById(cursor.getInt(1)));
+        fullProduct.setColor(cursor.getString(2));
+        fullProduct.setSize(cursor.getString(3));
+        }else
+        fullProduct=null;
         return fullProduct;
     }
     public int getIdProduct (int idFullkey){
         db = dataBaseHelper.getReadableDatabase();
         String query = "select id_product from FullProduct where id_fullKey=?";
         Cursor cursor = db.rawQuery(query,new String[]{Integer.toString(idFullkey)});
-        int id=cursor.getInt(0);
+        int id=-1;
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(0);
+        }
         return id;
 
     }

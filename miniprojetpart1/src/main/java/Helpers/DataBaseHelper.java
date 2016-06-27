@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBaseHelper extends SQLiteOpenHelper {
     /// paramettre spécifique la db
     public static final String db_name = "db1";
-    public static final int db_version = 8;
+    public static final int db_version = 9;
     private Context context;
     //-------------------------------------
 
@@ -77,7 +77,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String PRODUCT_CLIENT = "e_client_product";
     public static final String PRODUCT_CATEGORY = "e_category_product";
     public static final String PRODUCT_PRICE= "price_product";
-
+    public static final String PRODUCT_IMAGES_COVER_ICON = "iconcover_productimage";
+    public static final String PRODUCT_IMAGES_COVER_1 = "cover1_productimage";
+    public static final String PRODUCT_IMAGES_COVER_2 = "cover2_productimage";
+    public static final String PRODUCT_IMAGES_COVER_3 = "cover3_productimage";
 
     public static final String PRODUCT_TABLE_NAME = "Product";
 
@@ -89,8 +92,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     PRODUCT_CLIENT+ " TEXT, "+
                     PRODUCT_CATEGORY+ " TEXT, "+
                     PRODUCT_PRICE+" INTEGER, "+
-                    PRODUCT_REF+" TEXT"+
-
+                    PRODUCT_REF+" TEXT, "+
+                    PRODUCT_IMAGES_COVER_ICON+" TEXT, "+
+                    PRODUCT_IMAGES_COVER_1+" TEXT, "+
+                    PRODUCT_IMAGES_COVER_2+" TEXT, "+
+                    PRODUCT_IMAGES_COVER_3+" TEXT"+
                     " );";
     ///MAZEL la foreign key
 

@@ -222,10 +222,10 @@ public class MainActivity extends AppCompatActivity
 
             product.setTab_img(im);*/
             ProductRepo productRepo = new ProductRepo(this);
-
-
+        if (productRepo.getProductsByRef("zjhefj342P9d8")==null) {
+            System.out.println("BEFORE BRO--------------------------------");
             productRepo.addProduct(product);
-
+        }
 
 
             FullProductRepo fullProductRepo = new FullProductRepo(this);
@@ -233,6 +233,7 @@ public class MainActivity extends AppCompatActivity
                 System.out.println("Hi--------------------------------");
                 fullProductRepo.addFullProduct(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"vert","XS");
             }
+
             //Toast.makeText(this,productRepo.getProductsByRef("zjhefj342P98").getId_product(),Toast.LENGTH_LONG).show();
            //fullProductRepo.addFullProduct(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"vert","XS");
            //fullProductRepo.addFullProduct(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"bleu","XS");
@@ -245,11 +246,11 @@ public class MainActivity extends AppCompatActivity
             product.setPrice(1200);
             product.setRef("hefj3sasP9s8");
             product.setTypeClient("homme");
-       // if (productRepo.getProductsByRef("hefj3sasP9s8").getId_product()==-1){
+       if (productRepo.getProductsByRef("hefj3sasP9s8")==null){
 
             productRepo.addProduct(product);
-        //}
-        if (fullProductRepo.getIdFullProd(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS")!=0){
+        }
+        if (fullProductRepo.getIdFullProd(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS")==-1){
             fullProductRepo.addFullProduct(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS");
         }
             //fullProductRepo.addFullProduct(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS");

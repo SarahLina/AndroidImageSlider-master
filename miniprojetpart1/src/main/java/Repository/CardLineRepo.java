@@ -37,7 +37,8 @@ public class CardLineRepo   {
             id = cursor.getInt(0);
         }*/
         FullProductRepo fullProductRepo = new FullProductRepo(this.context);
-        contentValues.put("id_fullKey",fullProductRepo.getIdFullProd(fullProduct.getProduct().getId_product(),fullProduct.getColor(),fullProduct.getSize()));
+        int ids = fullProductRepo.getIdFullProd(fullProduct.getProduct().getId_product(),fullProduct.getColor(),fullProduct.getSize());
+        contentValues.put("id_fullKey",ids);
         contentValues.put("quantity_line_card",quantite);
 
         db.insert("Card_line",null,contentValues);
@@ -48,18 +49,22 @@ public class CardLineRepo   {
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
         String query = "select * from Card_line";
         Cursor cursor = db.rawQuery(query,null);
-        cursor.moveToFirst();
+
         FullProductRepo fullProductRepo = new FullProductRepo(this.context);
         ProductRepo productRepo = new ProductRepo(this.context);
-
-        while (!cursor.isLast()){
-            ArticlePannier articlePannier = new ArticlePannier();
-            articlePannier.setProduct(productRepo.getProductsById(fullProductRepo.getIdProduct(cursor.getInt(1))));
-            articlePannier.setCouleur(fullProductRepo.getFullProduct(cursor.getInt(1)).getColor());
-            articlePannier.setTaille(fullProductRepo.getFullProduct(cursor.getInt(1)).getSize());
-            articlePannier.setQuantite(cursor.getInt(2));
-            listCardLine.add(articlePannier);
-            cursor.moveToNext();
+        if(cursor.moveToFirst()) {
+            for (int i=0;i<cursor.getCount();i++){
+                ArticlePannier articlePannier = new ArticlePannier();
+                int ids = fullProductRepo.getIdProduct(cursor.getInt(1));
+                Product product = new Product();
+                product= productRepo.getProductsById(ids);
+                articlePannier.setProduct(product);
+                articlePannier.setCouleur(fullProductRepo.getFullProduct(cursor.getInt(1)).getColor());
+                articlePannier.setTaille(fullProductRepo.getFullProduct(cursor.getInt(1)).getSize());
+                articlePannier.setQuantite(cursor.getInt(2));
+                listCardLine.add(articlePannier);
+                cursor.moveToNext();
+            }
         }
 
         return listCardLine;

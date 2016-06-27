@@ -96,84 +96,85 @@ public class ProductFragment extends Fragment {
         if (Product.categorie_current.compareTo("Enfants")==0) {
             productList=productRepo.getProductsType("enfant");
         }
-
-        for(Product iProd:productList){
+        if (!productList.isEmpty()){
+        for(Product iProd:productList) {
             tabColor = new ArrayList<>();
             tabSize = new ArrayList<>();
-            if(fullProductRepo.existColorProd("bleu",iProd.getId_product())){
+            if (fullProductRepo.existColorProd("bleu", iProd.getId_product())) {
                 tabColor.add("bleu");
             }
-            if(fullProductRepo.existColorProd("noir",iProd.getId_product())){
+            if (fullProductRepo.existColorProd("noir", iProd.getId_product())) {
                 tabColor.add("noir");
             }
-            if(fullProductRepo.existColorProd("blanc",iProd.getId_product())){
+            if (fullProductRepo.existColorProd("blanc", iProd.getId_product())) {
                 tabColor.add("blanc");
             }
-            if(fullProductRepo.existColorProd("rouge",iProd.getId_product())){
+            if (fullProductRepo.existColorProd("rouge", iProd.getId_product())) {
                 tabColor.add("rouge");
             }
-            if(fullProductRepo.existColorProd("marron",iProd.getId_product())){
+            if (fullProductRepo.existColorProd("marron", iProd.getId_product())) {
                 tabColor.add("marron");
             }
-            if(fullProductRepo.existColorProd("rose",iProd.getId_product())){
+            if (fullProductRepo.existColorProd("rose", iProd.getId_product())) {
                 tabColor.add("rose");
             }
-            if(fullProductRepo.existColorProd("vert",iProd.getId_product())){
+            if (fullProductRepo.existColorProd("vert", iProd.getId_product())) {
                 tabColor.add("vert");
             }
-            if(fullProductRepo.existSizesProd("XS",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("XS", iProd.getId_product())) {
                 tabSize.add("XS");
             }
-            if(fullProductRepo.existSizesProd("S",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("S", iProd.getId_product())) {
                 tabSize.add("S");
             }
-            if(fullProductRepo.existSizesProd("M",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("M", iProd.getId_product())) {
                 tabSize.add("M");
             }
-            if(fullProductRepo.existSizesProd("L",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("L", iProd.getId_product())) {
                 tabSize.add("L");
             }
-            if(fullProductRepo.existSizesProd("Xl",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("Xl", iProd.getId_product())) {
                 tabSize.add("XL");
             }
-            if(fullProductRepo.existSizesProd("36",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("36", iProd.getId_product())) {
                 tabSize.add("36");
             }
-            if(fullProductRepo.existSizesProd("37",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("37", iProd.getId_product())) {
                 tabSize.add("37");
             }
-            if(fullProductRepo.existSizesProd("38",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("38", iProd.getId_product())) {
                 tabSize.add("38");
             }
-            if(fullProductRepo.existSizesProd("39",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("39", iProd.getId_product())) {
                 tabSize.add("39");
             }
-            if(fullProductRepo.existSizesProd("40",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("40", iProd.getId_product())) {
                 tabSize.add("40");
             }
-            if(fullProductRepo.existSizesProd("41",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("41", iProd.getId_product())) {
                 tabSize.add("42");
             }
-            if(fullProductRepo.existSizesProd("43",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("43", iProd.getId_product())) {
                 tabSize.add("43");
             }
-            if(fullProductRepo.existSizesProd("28",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("28", iProd.getId_product())) {
                 tabSize.add("28");
             }
-            if(fullProductRepo.existSizesProd("28",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("28", iProd.getId_product())) {
                 tabSize.add("28");
             }
-            if(fullProductRepo.existSizesProd("29",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("29", iProd.getId_product())) {
                 tabSize.add("29");
             }
-            if(fullProductRepo.existSizesProd("26",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("26", iProd.getId_product())) {
                 tabSize.add("26");
             }
-            if(fullProductRepo.existSizesProd("25",iProd.getId_product())){
+            if (fullProductRepo.existSizesProd("25", iProd.getId_product())) {
                 tabSize.add("25");
             }
             iProd.setColors(tabColor);
             iProd.setSizes(tabSize);
+        }
         }
         //Top & T-shirt
         /*

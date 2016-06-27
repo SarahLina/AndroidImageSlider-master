@@ -43,7 +43,7 @@ public class ProductRepo {
         Cursor cursor = db.rawQuery(query,null);
         //cursor est une liste
         cursor.moveToFirst();
-        while (!cursor.isLast()){
+        for (int i=0;i<cursor.getCount();i++){
             Product product = new Product();
             product.setName(cursor.getString(0));
             product.setTypeClient(cursor.getString(1));
@@ -65,7 +65,7 @@ public class ProductRepo {
         //cursor est une liste
         cursor.moveToFirst();
 
-        while (!cursor.isLast()){
+        for (int i=0;i<cursor.getCount();i++){
             Product product = new Product();
             product.setId_product(cursor.getInt(0));
             product.setName(cursor.getString(1));
@@ -89,19 +89,15 @@ public class ProductRepo {
         Product product = new Product();
         if(cursor.moveToFirst()){
 
-        product.setId_product(cursor.getInt(0));
-        product.setName(cursor.getString(1));
-        product.setTypeClient(cursor.getString(2));
-        product.setCategorie(cursor.getString(3));
-        product.setPrice(cursor.getFloat(4));
-        product.setRef(cursor.getString(5));
+            product.setId_product(cursor.getInt(0));
+            product.setName(cursor.getString(1));
+            product.setTypeClient(cursor.getString(2));
+            product.setCategorie(cursor.getString(3));
+            product.setPrice(cursor.getFloat(4));
+            product.setRef(cursor.getString(5));
+            cursor.moveToNext();
         }else{
-            product.setId_product(-1);
-            product.setName("");
-            product.setTypeClient("");
-            product.setCategorie("");
-            product.setPrice(-1);
-            product.setRef("");
+            product=null;
         }
 
         /*
@@ -125,7 +121,7 @@ public class ProductRepo {
     public Product getProductsById(int id){
        // List<Product>  list = new ArrayList<>();
         db = dataBaseHelper.getReadableDatabase();
-        String query = "select * from Product where id_priduct=?";
+        String query = "select * from Product where id_product=?";
         Cursor cursor = db.rawQuery(query,new String[]{Integer.toString(id)});
         //cursor est une liste
         cursor.moveToFirst();

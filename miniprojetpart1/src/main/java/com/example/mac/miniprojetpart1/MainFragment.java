@@ -13,6 +13,7 @@ import java.util.List;
 
 import Adapters.ArticlePannierCutomAdapter;
 import Metier.ArticlePannier;
+import Repository.CardLineRepo;
 import Services.GetDisponibiliteTask;
 import Services.UpdateDispoTask;
 
@@ -43,7 +44,10 @@ public class MainFragment extends Fragment {
 
     }
     public List<ArticlePannier> getArticleList() {
-        String[] listSummary = {"Article1","Article2"};
+        CardLineRepo cardLineRepo = new CardLineRepo(this.getContext());
+        List<ArticlePannier> articlePannierList = new ArrayList<>();
+        articlePannierList = cardLineRepo.getCardLine();
+        /*String[] listSummary = {"Article1","Article2"};
         //String[] listSummary = getResources().getStringArray(R.array.summary);
         List<ArticlePannier> articlePannierList = new ArrayList<ArticlePannier>();
         // le 1er livre
@@ -67,7 +71,7 @@ public class MainFragment extends Fragment {
         //articlePannier.setIconCover(R.drawable.ic_menu_camera);
 
         articlePannierList.add(articlePannier);
-
+        */
         return articlePannierList;
     }
 
