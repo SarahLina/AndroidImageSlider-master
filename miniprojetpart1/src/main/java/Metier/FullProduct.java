@@ -1,4 +1,6 @@
-package com.example.mac.myapplication.backend.Models;
+package Metier;
+
+import android.content.Context;
 
 /**
  * Created by mac on 26/06/16.
@@ -7,7 +9,9 @@ public class FullProduct {
     Product product;
     String size;
     String color;
-   // int quantity;//// quantite dipo
+    int quantity;//// quantite dipo
+
+
 
     public Product getProduct() {
         return product;
@@ -33,11 +37,11 @@ public class FullProduct {
         this.color = color;
     }
 
-   /* public Integer getQuantity() {
+    public Integer getQuantity() {
         return quantity;
-    }*/
+    }
 
-    /*public void setQuantity(Integer quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }*/
+    }
 }
