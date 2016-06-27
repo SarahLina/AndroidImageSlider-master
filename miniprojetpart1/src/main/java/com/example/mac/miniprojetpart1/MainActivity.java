@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        initBase();
         // set the fragment
         /*MainFragment fragment = new MainFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        initBase();
+
     }
 
     @Override
@@ -194,15 +194,12 @@ public class MainActivity extends AppCompatActivity
             product.setCategorie("Top & T-shirt");
         // product.setImg(R.drawable.ft81);
             product.setPrice(39734);
+
+            product.setPrice(39734);
             product.setRef("zjhefj342P9d8");
             product.setTypeClient("femme");
 
-            /*List <String> size= new ArrayList<>();
-            size.add("S");
-            size.add("M");
-            size.add("L");
-            size.add("XL");*/
-           /* product.setSizes(size);
+            /*Liizes(size);
             List <String> color= new ArrayList<>();
             color.add("Noir");
             color.add("Blanc");
