@@ -104,7 +104,7 @@
                 android:id="@+id/moins"
                 android:elevation="5dp"
                 android:src="@android:drawable/ic_menu_add"
-                android:background="@drawable/circle"
+                android:background="@drawable/bird"
 
                 />
 
@@ -129,7 +129,7 @@
                 android:id="@+id/delete"
                 android:elevation="5dp"
                 android:src="@android:drawable/ic_menu_more"
-                android:background="@drawable/circle" />
+                android:background="@drawable/bird" />
 
             </LinearLayout>
 

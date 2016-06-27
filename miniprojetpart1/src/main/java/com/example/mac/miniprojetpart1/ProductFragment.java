@@ -1,5 +1,6 @@
 package com.example.mac.miniprojetpart1;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,19 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Adapters.CustomAdapter;
+import Metier.FullProduct;
 import Metier.Product;
+import Repository.FullProductRepo;
+import Repository.ProductRepo;
 
 
 public class ProductFragment extends Fragment {
     CustomAdapter cutomAdapter ;
     ListView listView;
     ArrayAdapter arrayAdapter;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product,null);
         listView = (ListView) view.findViewById(R.id.listView);
-        cutomAdapter = new CustomAdapter(view.getContext(), getProductList());
+        cutomAdapter = new CustomAdapter(view.getContext(), getProductList(view.getContext()));
         listView.setAdapter(cutomAdapter);
 
         //Implémenter le Spinner
@@ -75,13 +78,105 @@ public class ProductFragment extends Fragment {
         Toast.makeText(view.getContext(), "produit ajouté", Toast.LENGTH_LONG);
     }
 
-    public List<Product> getProductList() {
+    public List<Product> getProductList(Context context) {
         List<Product> productList = new ArrayList<Product>();
-
+        ProductRepo productRepo = new ProductRepo(context);
+        FullProductRepo fullProductRepo = new FullProductRepo(context);
         // Type Client =  Femmes
-
+        List<String> tabColor = new ArrayList<>();
+        List<String> tabSize = new ArrayList<>();
         if (Product.categorie_current.compareTo("Femmes")==0)
-        {  //Top & T-shirt
+        {
+            productList=productRepo.getProductsType("femme");
+
+        }
+        if (Product.categorie_current.compareTo("Hommes")==0){
+            productList=productRepo.getProductsType("homme");
+        }
+        if (Product.categorie_current.compareTo("Enfants")==0) {
+            productList=productRepo.getProductsType("enfant");
+        }
+
+        for(Product iProd:productList){
+            tabColor = new ArrayList<>();
+            tabSize = new ArrayList<>();
+            if(fullProductRepo.existColorProd("bleu",iProd.getId_product())){
+                tabColor.add("bleu");
+            }
+            if(fullProductRepo.existColorProd("noir",iProd.getId_product())){
+                tabColor.add("noir");
+            }
+            if(fullProductRepo.existColorProd("blanc",iProd.getId_product())){
+                tabColor.add("blanc");
+            }
+            if(fullProductRepo.existColorProd("rouge",iProd.getId_product())){
+                tabColor.add("rouge");
+            }
+            if(fullProductRepo.existColorProd("marron",iProd.getId_product())){
+                tabColor.add("marron");
+            }
+            if(fullProductRepo.existColorProd("rose",iProd.getId_product())){
+                tabColor.add("rose");
+            }
+            if(fullProductRepo.existColorProd("vert",iProd.getId_product())){
+                tabColor.add("vert");
+            }
+            if(fullProductRepo.existSizesProd("XS",iProd.getId_product())){
+                tabSize.add("XS");
+            }
+            if(fullProductRepo.existSizesProd("S",iProd.getId_product())){
+                tabSize.add("S");
+            }
+            if(fullProductRepo.existSizesProd("M",iProd.getId_product())){
+                tabSize.add("M");
+            }
+            if(fullProductRepo.existSizesProd("L",iProd.getId_product())){
+                tabSize.add("L");
+            }
+            if(fullProductRepo.existSizesProd("Xl",iProd.getId_product())){
+                tabSize.add("XL");
+            }
+            if(fullProductRepo.existSizesProd("36",iProd.getId_product())){
+                tabSize.add("36");
+            }
+            if(fullProductRepo.existSizesProd("37",iProd.getId_product())){
+                tabSize.add("37");
+            }
+            if(fullProductRepo.existSizesProd("38",iProd.getId_product())){
+                tabSize.add("38");
+            }
+            if(fullProductRepo.existSizesProd("39",iProd.getId_product())){
+                tabSize.add("39");
+            }
+            if(fullProductRepo.existSizesProd("40",iProd.getId_product())){
+                tabSize.add("40");
+            }
+            if(fullProductRepo.existSizesProd("41",iProd.getId_product())){
+                tabSize.add("42");
+            }
+            if(fullProductRepo.existSizesProd("43",iProd.getId_product())){
+                tabSize.add("43");
+            }
+            if(fullProductRepo.existSizesProd("28",iProd.getId_product())){
+                tabSize.add("28");
+            }
+            if(fullProductRepo.existSizesProd("28",iProd.getId_product())){
+                tabSize.add("28");
+            }
+            if(fullProductRepo.existSizesProd("29",iProd.getId_product())){
+                tabSize.add("29");
+            }
+            if(fullProductRepo.existSizesProd("26",iProd.getId_product())){
+                tabSize.add("26");
+            }
+            if(fullProductRepo.existSizesProd("25",iProd.getId_product())){
+                tabSize.add("25");
+            }
+            iProd.setColors(tabColor);
+            iProd.setSizes(tabSize);
+        }
+        //Top & T-shirt
+        /*
 
             Product product= new Product();
             product.setName("T shirt 1");
@@ -132,7 +227,7 @@ public class ProductFragment extends Fragment {
             im.add(R.drawable.ft2);
             product.setTab_img(im);
             productList.add(product);
-
+/*
             product= new Product();
             product.setName("T shirt 3");
             product.setCategorie("Top & T-shirt");
@@ -777,10 +872,10 @@ public class ProductFragment extends Fragment {
         }
 
         // Type Client =  Hommes
+        */
 
-        if (Product.categorie_current.compareTo("Hommes")==0)
-        {  //T-shirt
-
+        //T-shirt
+            /*
             Product product= new Product();
             product.setName("T shirt 1");
             product.setCategorie("Top & T-shirt");
@@ -1489,8 +1584,11 @@ public class ProductFragment extends Fragment {
         // Type Client =  Enfants
 
         if (Product.categorie_current.compareTo("Enfants")==0)
-        {  //T-shirt
+        {
 
+        }*/
+        //T-shirt
+             /*
             Product product= new Product();
             product.setName("T shirt 1");
             product.setCategorie("Top & T-shirt");
@@ -2124,7 +2222,7 @@ public class ProductFragment extends Fragment {
             product.setTab_img(im);
             productList.add(product);
 
-        }
+        }*/
 
 
 

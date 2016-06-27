@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -30,13 +32,23 @@ import java.util.HashMap;
 import java.util.List;
 
 import Adapters.TransformerAdapter;
+import Metier.FullProduct;
 import Metier.Product;
+import Repository.CardLineRepo;
+import Repository.FullProductRepo;
+import Repository.ProductRepo;
 
 
 public  class DetailFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     ArrayAdapter arrayAdapter;
     private SliderLayout mDemoSlider;
 
+    private Product product ;
+    private TextView nameprod;
+    private TextView ref;
+    private Spinner spinnersize;
+    private Spinner spinnercolor;
+    private EditText quantite;
 
 
 
@@ -45,18 +57,36 @@ public  class DetailFragment extends Fragment implements BaseSliderView.OnSlider
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail, null);
+        final View view = inflater.inflate(R.layout.fragment_detail, null);
         Bundle bundle = getArguments();
 
 
         if (bundle != null) {
 
-            Product product = (Product) bundle.getSerializable("product");
-            TextView nameprod= (TextView)view.findViewById(R.id.name);
-            TextView ref= (TextView)view.findViewById(R.id.ref);
-            Spinner spinnersize= (Spinner) view.findViewById(R.id.taillespiner);
-            Spinner spinnercolor= (Spinner) view.findViewById(R.id.couleurspinner);
+            this.product = (Product) bundle.getSerializable("product");
+            this.nameprod= (TextView)view.findViewById(R.id.name);
+             this.ref= (TextView)view.findViewById(R.id.ref);
+             this.spinnersize= (Spinner) view.findViewById(R.id.taillespiner);
+             this.spinnercolor= (Spinner) view.findViewById(R.id.couleurspinner);
+            this.quantite = (EditText) view.findViewById(R.id.quantite);
+            Button ajouter = (Button) view.findViewById(R.id.ajouter);
+            ajouter.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    CardLineRepo cardLineRepo = new CardLineRepo(v.getContext());
+                    FullProduct fullProduct = new FullProduct();
+                    ProductRepo productRepo = new ProductRepo(v.getContext());
+                    //FullProductRepo fullProductRepo = new FullProductRepo(v.getContext());
+                    fullProduct.setProduct(productRepo.getProductsByRef(product.getRef()));
+                    fullProduct.setSize(spinnersize.getSelectedItem().toString());//
+                    fullProduct.setColor(spinnercolor.getSelectedItem().toString());//spin-------
+                    //fullProduct.setQuantity(quantite.getText().toString().);////parse in int
+                    cardLineRepo.addCardLineRepo(fullProduct,Integer.parseInt(quantite.getText().toString()));
 
+                }
+            });
             nameprod.setText(product.getName());
             ref.setText(product.getRef());
 
@@ -72,13 +102,13 @@ public  class DetailFragment extends Fragment implements BaseSliderView.OnSlider
             mDemoSlider = (SliderLayout)view.findViewById(R.id.slider);
 
             HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-            if (product.getTab_img()!= null) {
+            /*if (product.getTab_img()!= null) {
                 for (int i = 0; i < product.getTab_img().size(); i++) {
                     file_maps.put(product.getName()+i, product.getTab_img(i));
 
 
                 }
-            }
+            }*/
 
 
             for(String name : file_maps.keySet()){
@@ -109,7 +139,19 @@ public  class DetailFragment extends Fragment implements BaseSliderView.OnSlider
 
         return view;
     }
+   /* public void ajouter(){
+       // FullProductRepo fullProductRepo =new FullProductRepo(this.view.getContext());
+        CardLineRepo cardLineRepo = new CardLineRepo(this.view.getContext());
+        FullProduct fullProduct = new FullProduct();
+        ProductRepo productRepo = new ProductRepo(this.view.getContext());
+        FullProductRepo fullProductRepo = new FullProductRepo(this.view.getContext());
+        fullProduct.setProduct(productRepo.getProductsByRef(ref.toString()));
+        fullProduct.setSize(spinnersize.toString());//
+        fullProduct.setColor(spinnercolor.toString());//spin-------
+        //fullProduct.setQuantity(quantite.getText().toString().);////parse in int
+        cardLineRepo.addCardLineRepo(fullProduct,Integer.parseInt(quantite.getText().toString()));
 
+    }*/
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -129,4 +171,5 @@ public  class DetailFragment extends Fragment implements BaseSliderView.OnSlider
     public void onSliderClick(BaseSliderView slider) {
 
     }
+
 }

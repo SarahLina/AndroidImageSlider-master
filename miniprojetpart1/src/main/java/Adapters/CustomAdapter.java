@@ -64,7 +64,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable
         TextView textColor = (TextView) convertView.findViewById(R.id.colors);
 
 
-        coverIcon.setImageResource(productList.get(position).getImg());
+        //coverIcon.setImageResource(productList.get(position).getImg());
         textTitle.setText(productList.get(position).getName());
 
         // Récupérer la liste des tailles
@@ -74,7 +74,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable
         if (productSize.size()>0 ) {
         String size = productSize.get(0);
         listSize = productSize.size();
-        if (listSize > 1) {
+        if (listSize > 0) {
             for (int i = 1; i < listSize; i++) {
                 size = size + ", " + productSize.get(i);
             }
@@ -86,7 +86,7 @@ public class CustomAdapter extends BaseAdapter implements Filterable
         // Séparer la liste des tailles par une virgule
         String color = productcolor.get(0);
         listSize = productcolor.size();
-        if (listSize > 1) {
+        if (listSize > 0) {
             for (int i = 1; i < listSize; i++) {
                 color = color + ", " + productcolor.get(i);
             }

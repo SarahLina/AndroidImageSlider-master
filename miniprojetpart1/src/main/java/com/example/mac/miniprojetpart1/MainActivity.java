@@ -1,6 +1,5 @@
 package com.example.mac.miniprojetpart1;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -17,7 +16,13 @@ import android.widget.Toast;
 import com.example.msia.julina.AproposFragment;
 import com.example.msia.julina.HelpFragment;
 
+import java.util.ArrayList;
+
+import Metier.FullProduct;
 import Metier.Product;
+import Repository.CardLineRepo;
+import Repository.FullProductRepo;
+import Repository.ProductRepo;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,6 +63,7 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        initBase();
     }
 
     @Override
@@ -109,6 +115,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_femme) {
+
             Product.categorie_current="Femmes";
             Intent intent = new Intent(this,ProductActivity.class);
             startActivity(intent);
@@ -128,6 +135,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_cmd) {
+
             CmdFragment fragment = new CmdFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                     .beginTransaction();
@@ -179,4 +187,125 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this,ProductActivity.class);
         startActivity(intent);
     }
+
+    public void initBase(){
+            Product product= new Product();
+            product.setName("T shirt 1");
+            product.setCategorie("Top & T-shirt");
+        // product.setImg(R.drawable.ft81);
+            product.setPrice(39734);
+            product.setRef("zjhefj342P9d8");
+            product.setTypeClient("femme");
+
+            /*List <String> size= new ArrayList<>();
+            size.add("S");
+            size.add("M");
+            size.add("L");
+            size.add("XL");*/
+           /* product.setSizes(size);
+            List <String> color= new ArrayList<>();
+            color.add("Noir");
+            color.add("Blanc");
+            color.add("Rose");
+            color.add("Gris");*/
+            /* product.setColors(color);
+            List <Integer> im= new  ArrayList<>();
+            im.add(R.drawable.ft81);
+            im.add(R.drawable.ft82);
+            im.add(R.drawable.ft83);
+
+
+            product.setTab_img(im);*/
+            ProductRepo productRepo = new ProductRepo(this);
+            productRepo.addProduct(product);
+
+            FullProductRepo fullProductRepo = new FullProductRepo(this);
+            if (fullProductRepo.getIdFullProd(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"vert","XS")==-1){
+                System.out.println("Hi--------------------------------");
+                fullProductRepo.addFullProduct(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"vert","XS");
+            }
+            //Toast.makeText(this,productRepo.getProductsByRef("zjhefj342P98").getId_product(),Toast.LENGTH_LONG).show();
+           //fullProductRepo.addFullProduct(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"vert","XS");
+           //fullProductRepo.addFullProduct(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"bleu","XS");
+           //fullProductRepo.addFullProduct(productRepo.getProductsByRef("zjhefj342P9d8").getId_product(),"bleu","S");
+
+            product= new Product();
+            product.setName("T shirt 2");
+            product.setCategorie("Top & T-shirt");
+            //product.setImg(R.drawable.ft1);
+            product.setPrice(1200);
+            product.setRef("hefj3sasP9s8");
+            product.setTypeClient("homme");
+           productRepo.addProduct(product);
+        if (fullProductRepo.getIdFullProd(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS")!=0){
+            fullProductRepo.addFullProduct(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS");
+        }
+            //fullProductRepo.addFullProduct(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"marron","XS");
+           // fullProductRepo.addFullProduct(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"noir","XS");
+           // fullProductRepo.addFullProduct(productRepo.getProductsByRef("hefj3sasP9s8").getId_product(),"noir","XS");
+
+         /*   size= new ArrayList<>();
+            size.add("S");
+            size.add("M");
+            size.add("L");
+            product.setSizes(size);
+            color= new ArrayList<>();
+            color.add("bleu");
+            color.add("Blanc");
+            product.setColors(color);
+            im= new  ArrayList<>();
+            im.add(R.drawable.ft1);
+            im.add(R.drawable.ft2);
+            product.setTab_img(im);
+            productList.add(product);*/ /*
+        product= new Product();
+        product.setName("T shirt 3");
+        product.setCategorie("Top & T-shirt");
+        product.setImg(R.drawable.ft2);
+        product.setPrice(1300);
+        product.setRef("hefj3sasP98");
+        product.setTypeClient("homme");
+           size= new ArrayList<>();
+            size.add("S");
+            size.add("M");
+            size.add("L");
+            product.setSizes(size);
+            color= new ArrayList<>();
+            color.add("bleu");
+            color.add("Blanc");
+            color.add("jaune");
+            product.setColors(color);
+            im= new  ArrayList<>();
+            im.add(R.drawable.ft2);
+            im.add(R.drawable.ft3);
+            product.setTab_img(im);
+            productList.add(product);
+
+            product= new Product();
+            product.setName("T shirt 4");
+            product.setCategorie("Top & T-shirt");
+            product.setImg(R.drawable.ft3);
+            product.setPrice(1400);
+            product.setRef("hefj3sasP98");
+            product.setTypeClient("Femmes");
+            size= new ArrayList<>();
+            size.add("S");
+            size.add("M");
+            size.add("L");
+            product.setSizes(size);
+            color= new ArrayList<>();
+            color.add("bleu");
+            color.add("Blanc");
+            product.setColors(color);
+            im= new  ArrayList<>();
+            im.add(R.drawable.ft3);
+            im.add(R.drawable.ft4);
+            im.add(R.drawable.ft5);
+            product.setTab_img(im);
+            productList.add(product);*/
+
+
+    }
+
+
 }

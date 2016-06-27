@@ -8,6 +8,15 @@ import java.util.List;
  */
 public class Product implements Serializable {
     public static String categorie_current;
+    private int id_product;
+
+    public int getId_product() {
+        return id_product;
+    }
+
+    public void setId_product(int id_product) {
+        this.id_product = id_product;
+    }
 
     private String categorie;
     private String typeClient;      //Hommes ou femmes ou enfants
@@ -15,14 +24,30 @@ public class Product implements Serializable {
     private String ref;
     private List<String> sizes;
     private List<String> colors;
-    private float price;
-    private int img;
-    private List<Integer>  tab_img;
 
-
-    public void setTab_img(List<Integer> tab_img) {
-        this.tab_img = tab_img;
+    public List<String> getSizes() {
+        return sizes;
     }
+
+    public void setSizes(List<String> sizes) {
+        this.sizes = sizes;
+    }
+
+    public List<String> getColors() {
+        return colors;
+    }
+
+    public void setColors(List<String> colors) {
+        this.colors = colors;
+    }
+
+    private float price;
+   // private int img;
+    private String cover;
+    private String cover1;
+    private String cover2;
+    private String cover3;
+
 
 
 
@@ -43,21 +68,13 @@ public class Product implements Serializable {
         this.categorie = categorie;
     }
 
-    public int getImg() {
+    /*public int getImg() {
         return img;
     }
 
     public void setImg(int img) {
         this.img = img;
-    }
-
-    public static String getCurrent_caretorie() {
-        return categorie_current;
-    }
-
-    public static void setCategorie_current(String current_caretorie) {
-        Product.categorie_current = current_caretorie;
-    }
+    }*/
 
     public String getName() {
         return name;
@@ -67,31 +84,36 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public List<String> getSizes() {
-        return sizes;
+    public String getCover() {
+        return cover;
     }
 
-    public List<Integer> getTab_img() {
-        return tab_img;
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
-    public Integer getTab_img(int pos) {
-        return tab_img.get(pos);
+    public String getCover1() {
+        return cover1;
     }
 
-
-
-
-    public void setSizes(List<String> sizes) {
-        this.sizes = sizes;
+    public void setCover1(String cover1) {
+        this.cover1 = cover1;
     }
 
-    public List<String> getColors() {
-        return colors;
+    public String getCover2() {
+        return cover2;
     }
 
-    public void setColors(List<String> colors) {
-        this.colors = colors;
+    public void setCover2(String cover2) {
+        this.cover2 = cover2;
+    }
+
+    public String getCover3() {
+        return cover3;
+    }
+
+    public void setCover3(String cover3) {
+        this.cover3 = cover3;
     }
 
     public float getPrice() {
