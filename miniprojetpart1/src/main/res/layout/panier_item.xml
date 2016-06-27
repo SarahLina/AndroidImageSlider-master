@@ -63,18 +63,6 @@
                 android:text="test"
                 android:textColor="#364F6B" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/prix"
-                android:layout_below="@+id/taille"
-                android:layout_toRightOf="@+id/articleIcon"
-                android:text="test"
-                android:textColor="#364F6B" />
-
-
-
-
         </LinearLayout>
 
 

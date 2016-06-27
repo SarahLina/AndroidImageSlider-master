@@ -13,6 +13,7 @@ import com.example.mac.miniprojetpart1.R;
 import java.util.List;
 
 import Metier.ArticlePannier;
+import Services.ImageConverter;
 
 
 public class ArticlePannierCutomAdapter extends BaseAdapter  {
@@ -50,10 +51,12 @@ public class ArticlePannierCutomAdapter extends BaseAdapter  {
         TextView textNom = (TextView) convertView.findViewById(R.id.nom);
         TextView textCouleur = (TextView) convertView.findViewById(R.id.couleur);
         TextView textTaille = (TextView) convertView.findViewById(R.id.taille);
+        ImageConverter ic = new ImageConverter();
 
         //coverIcon.setImageResource(articleList.get(position).getIconCover());
         coverIcon.setImageResource(R.drawable.ic_tshirt1);
-        textNom.setText(articleList.get(position).getNom());
+        //coverIcon.setImageBitmap(ic.StringToBitMap(articleList.get(position).getProduct().getCover()));
+        textNom.setText(articleList.get(position).getProduct().getName());
         textCouleur.setText(articleList.get(position).getCouleur());
         textTaille.setText(articleList.get(position).getTaille());
 

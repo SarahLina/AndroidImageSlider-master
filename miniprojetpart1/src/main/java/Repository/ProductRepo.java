@@ -118,20 +118,28 @@ public class ProductRepo {
         db.close();
         return product;
     }
-    public Product getProductsById(int id){
-       // List<Product>  list = new ArrayList<>();
+    public Product getProductsById(int id) {
+        // List<Product>  list = new ArrayList<>();
         db = dataBaseHelper.getReadableDatabase();
         String query = "select * from Product where id_product=?";
-        Cursor cursor = db.rawQuery(query,new String[]{Integer.toString(id)});
+        Cursor cursor = db.rawQuery(query, new String[]{Integer.toString(id)});
         //cursor est une liste
-        cursor.moveToFirst();
+
         Product product = new Product();
-        product.setId_product(cursor.getInt(0));
+        if (cursor.moveToFirst()){
+
+            product.setId_product(cursor.getInt(0));
         product.setName(cursor.getString(1));
         product.setTypeClient(cursor.getString(2));
         product.setCategorie(cursor.getString(3));
         product.setPrice(cursor.getFloat(4));
         product.setRef(cursor.getString(5));
+       /* product.setCover(cursor.getString(6));
+        product.setCover1(cursor.getString(7));
+        product.setCover2(cursor.getString(8));
+        product.setCover3(cursor.getString(9));*/
+        }else product=null;
+
         /*
         list.add(product);
         cursor.moveToNext();
