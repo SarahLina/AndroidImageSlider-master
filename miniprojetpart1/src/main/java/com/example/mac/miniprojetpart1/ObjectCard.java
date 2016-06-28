@@ -1,6 +1,8 @@
-package com.example.mac.myapplication.backend.Models;
+package com.example.mac.miniprojetpart1;
 
 import java.util.List;
+
+import Metier.ArticlePannier;
 
 /**
  * Created by mac on 26/06/16.

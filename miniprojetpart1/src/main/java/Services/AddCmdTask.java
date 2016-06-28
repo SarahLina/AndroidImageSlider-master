@@ -3,6 +3,7 @@ package Services;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -32,7 +33,7 @@ public class AddCmdTask extends AsyncTask<String,Void,String> {
         String result="";
         URL url= null;
         try {
-            url = new URL("http://192.168.1.6:8080/AddCmd");
+            url = new URL("http://192.168.8.101:8080/AddCmd");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -64,10 +65,10 @@ public class AddCmdTask extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         if(s.equals("1")) {
-            Toast.makeText(context, "sucess", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "commande ajoutee", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "commande non ajoutee", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -80,7 +80,9 @@
         android:layout_alignStart="@+id/mdp"
         android:background="@drawable/myrect2"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="login"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -97,7 +99,6 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="@drawable/myrect2"
         android:layout_marginTop="20dp"
-        android:onClick="login"
          />
 
     <TextView

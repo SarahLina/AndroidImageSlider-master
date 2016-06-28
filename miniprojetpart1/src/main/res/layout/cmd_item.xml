@@ -29,11 +29,12 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="date"
             android:id="@+id/date"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:textSize="16dp"
-
-            />
+android:layout_marginLeft="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/cmdnum"
+            android:layout_toEndOf="@+id/cmdnum" />
 
         <TextView
             android:layout_width="wrap_content"

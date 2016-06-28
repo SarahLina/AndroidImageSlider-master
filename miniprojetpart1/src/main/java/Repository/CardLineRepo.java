@@ -58,6 +58,7 @@ public class CardLineRepo   {
                 int ids = fullProductRepo.getIdProduct(cursor.getInt(1));
                 Product product = new Product();
                 product= productRepo.getProductsById(ids);
+
                 articlePannier.setProduct(product);
                 articlePannier.setCouleur(fullProductRepo.getFullProduct(cursor.getInt(1)).getColor());
                 articlePannier.setTaille(fullProductRepo.getFullProduct(cursor.getInt(1)).getSize());
@@ -78,8 +79,10 @@ public class CardLineRepo   {
         db.close();
 
     }
+
     public void  deleteLine(int id_prod_full,int qte) {
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
+
         db.delete("Card_line"," id_fullKey=? and quantity_line_card=?",new String[]{String.valueOf(id_prod_full),String.valueOf(qte)});
         db.close();
 

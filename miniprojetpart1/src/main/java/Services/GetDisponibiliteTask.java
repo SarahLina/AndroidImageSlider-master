@@ -48,7 +48,7 @@ public class GetDisponibiliteTask extends AsyncTask<Object,Void,Boolean> {
             this.quantity= (int) params[3];
 
 
-            URL url = new URL("http://192.168.1.6:8080/GetDisponibilite?id_product="+params[0]+"&color="+params[1]+"&size="+params[2]+"&quantity="+params[3]);
+            URL url = new URL("http://192.168.8.101:8080/GetDisponibilite?id_product="+params[0]+"&color="+params[1]+"&size="+params[2]+"&quantity="+params[3]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Attendre 5 secondes max pour établir la connexion
             conn.setConnectTimeout(5000);

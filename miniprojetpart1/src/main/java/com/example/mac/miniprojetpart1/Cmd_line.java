@@ -1,4 +1,4 @@
-package com.example.mac.myapplication.backend.Models;
+package com.example.mac.miniprojetpart1;
 
 /**
  * Created by mac on 26/06/16.

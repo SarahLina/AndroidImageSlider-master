@@ -49,7 +49,7 @@ public class GetListCmdTask extends AsyncTask<Object,Void,String> {
         StringBuilder result = new StringBuilder();
         String data;
         try {
-            URL url = new URL("http://192.168.1.6:8080/GetCmd?username="+params[0]);
+            URL url = new URL("http://192.168.8.101:8080/GetCmd?username="+params[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Attendre 5 secondes max pour établir la connexion
             conn.setConnectTimeout(5000);

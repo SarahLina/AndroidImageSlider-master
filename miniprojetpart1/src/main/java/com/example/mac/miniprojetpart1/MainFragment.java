@@ -1,19 +1,27 @@
 package com.example.mac.miniprojetpart1;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
+
+import com.example.msia.julina.AlarmService;
+import com.example.msia.julina.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Adapters.ArticlePannierCutomAdapter;
 import Metier.ArticlePannier;
+import Metier.FullProduct;
 import Repository.CardLineRepo;
+import Repository.ProductRepo;
 import Services.GetDisponibiliteTask;
 import Services.UpdateDispoTask;
 
@@ -33,13 +41,34 @@ public class MainFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_main,null);
 
-       // new UpdateDispoTask(getActivity()).execute(1,"bleu","XL", 2);
 
 
 
         ListView listView = (ListView) v.findViewById(R.id.listView);
+        List<ArticlePannier> list = getArticleList();
+
         cutomAdapter = new ArticlePannierCutomAdapter(getActivity(),getArticleList());
         listView.setAdapter(cutomAdapter);
+
+
+        final Button ajouter = (Button) v.findViewById(R.id.ajouterAuPanier);
+        ajouter.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                System.out.println("------valider  dagui----");
+
+                new AlarmService().activateBroadcast(getActivity());
+                new AlarmService().launcherAlarmRepeat(getContext());
+
+                Intent intent = new Intent(v.getContext(),LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
         return v;
 
     }
@@ -47,33 +76,10 @@ public class MainFragment extends Fragment {
         CardLineRepo cardLineRepo = new CardLineRepo(this.getContext());
         List<ArticlePannier> articlePannierList = new ArrayList<>();
         articlePannierList = cardLineRepo.getCardLine();
-        /*String[] listSummary = {"Article1","Article2"};
-        //String[] listSummary = getResources().getStringArray(R.array.summary);
-        List<ArticlePannier> articlePannierList = new ArrayList<ArticlePannier>();
-        // le 1er livre
-        ArticlePannier articlePannier = new ArticlePannier();
-        articlePannier.setNom("T-shirt 1");
-        //List authors = new ArrayList();
-
-        articlePannier.setCouleur("Rouge");
-        articlePannier.setTaille("2200 Da");
-        //articlePannier.setIconCover(R.drawable.ic_menu_camera);
-
-        articlePannierList.add(articlePannier);
-
-        articlePannier = new ArticlePannier();
-
-        articlePannier.setNom("T-shirt Lacoste");
-        //List authors = new ArrayList();
-
-        articlePannier.setCouleur("Noir");
-        articlePannier.setTaille("4000 Da");
-        //articlePannier.setIconCover(R.drawable.ic_menu_camera);
-
-        articlePannierList.add(articlePannier);
-        */
-        return articlePannierList;
+         return articlePannierList;
     }
+
+
 
 
 

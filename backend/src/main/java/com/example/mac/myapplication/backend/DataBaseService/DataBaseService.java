@@ -25,6 +25,7 @@ import java.util.List;
  * Created by mac on 26/06/16.
  */
 public class DataBaseService {
+    private static int id_encours =2;
 
     public static final String className = "com.mysql.jdbc.Driver";
     public static final String chaine = "jdbc:mysql://localhost:3306/JulinaDB";
@@ -141,7 +142,8 @@ public class DataBaseService {
     {
 
         List <Cmd_line> listCmdLine = objectCard.getListCmdLine();
-        User user= objectCard.getUser();
+
+        String user= objectCard.getUsername();
 
 
         Calendar c = Calendar.getInstance();
@@ -157,8 +159,10 @@ public class DataBaseService {
 
         try {
             st = connection.prepareStatement(query);
+            st.setInt(1,id_encours);
+            id_encours++;
             st.setString(2,formattedDate);
-            st.setString(3,user.getUsername());
+            st.setString(3,user);
             st.setString(4,"En attente");
             i= st.executeUpdate();
         } catch (SQLException e) {
@@ -174,41 +178,24 @@ public class DataBaseService {
         }
 
 
-        connection= connecter();
-        String query2 ="select id_cmd from Cmd where date_cmd= ? and username=?";
-        ResultSet rs = null;
-        try {
-            st = connection.prepareStatement(query2);
-            st.setString(2,formattedDate);
-            st.setString(3,user.getUsername());
-            rs = st.executeQuery();
-            i= st.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        if (st!=null) try {
-            st.close();
-            if (connection!=null) connection.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
 
 
-        connection= connecter();
         for (int j=0; j< listCmdLine.size(); j++)
         {
-             query= "insert into Cmd_line values (?,?,?,?)";
+            connection= connecter();
+            query= "insert into Cmd_line values (?,?,?,?,?)";
              st= null;     //Prepared statement sont utilisé pour les requestes paramétrées
              i =-1;
 
             try {
                 st = connection.prepareStatement(query);
-                st.setString(2,rs.getString(1));
-                st.setInt(3,listCmdLine.get(j).getFullProduct().getProduct().getId_product());
-                st.setInt(4,listCmdLine.get(i).getQuantity_Cmd_line());
+                st.setInt(1,this.id_encours);
+                st.setInt(2,listCmdLine.get(j).getId_product());
+                st.setString(4,listCmdLine.get(j).getColor());
+                st.setString(5,listCmdLine.get(j).getSize());
+                st.setInt(3,listCmdLine.get(j).getQuantity_Cmd_line());
+
                 i= st.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -222,6 +209,7 @@ public class DataBaseService {
                 e.printStackTrace();
             }
         }
+
 
 
         return i;

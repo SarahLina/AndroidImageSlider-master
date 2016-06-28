@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AddCmdServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.print("ani ha nedkhol1");
 
         String data ;
         StringBuilder result = new StringBuilder();
@@ -33,8 +34,12 @@ public class AddCmdServlet extends HttpServlet {
         }
 
         ObjectCard objectCard = new Gson().fromJson(result.toString(),ObjectCard.class);
-        // i= 1 ou i = -1 selon si l'insertion dans la bdd a été faite ou pas
+        System.out.print("le username de lobjet"+objectCard.getUsername());
+        // i= 1 ou i = -1 selon si l'insertion dans la bdd a été faite ou pass
         int i = new DataBaseService().addCmd(objectCard);
+
         resp.getWriter().write(String.valueOf(i));
     }
+
+
 }

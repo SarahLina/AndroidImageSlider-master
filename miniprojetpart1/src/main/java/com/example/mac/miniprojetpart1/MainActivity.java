@@ -1,6 +1,7 @@
 package com.example.mac.miniprojetpart1;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,7 +20,10 @@ import com.example.msia.julina.HelpFragment;
 import com.example.msia.julina.LoginActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import Helpers.DataBaseHelper;
+import Metier.ArticlePannier;
 import Metier.FullProduct;
 import Metier.Product;
 import Repository.CardLineRepo;
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity
 
     NavigationView navigationView =null;
     Toolbar toolbar = null;
+    public static int idMainActivity;
+    private CardLineRepo cardLineRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +53,41 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.replace(R.id.fragment_contenairer,fragment);
         fragmentTransaction.commit();*/
 
-        ActivityFragment fragment = new ActivityFragment();
-        Intent intent = getIntent();
-        Bundle bundle = new Bundle();
 
-        fragment.setArguments(bundle);
-        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
-                .beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_contenairer, fragment);
-        fragmentTransaction.commit();
+
+
+            if (idMainActivity == R.id.nav_monpanier) {
+
+                idMainActivity= -1;
+                MainFragment fragment = new MainFragment();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                        .beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_contenairer, fragment);
+                fragmentTransaction.commit();
+            }
+        else
+            if (idMainActivity == R.id.nav_cmd) {
+
+                idMainActivity= -1;
+                CmdFragment fragment = new CmdFragment();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                        .beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_contenairer,fragment);
+                fragmentTransaction.commit();
+            }
+        else
+            {
+                ActivityFragment fragment = new ActivityFragment();
+                Intent intent = getIntent();
+                Bundle bundle = new Bundle();
+
+                fragment.setArguments(bundle);
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                        .beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_contenairer, fragment);
+                fragmentTransaction.commit();
+            }
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -99,7 +131,7 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        idMainActivity = item.getItemId();
 
         //noinspection SimplifiableIfStatement
 
@@ -108,7 +140,6 @@ public class MainActivity extends AppCompatActivity
                     .beginTransaction();
             fragmentTransaction.replace(R.id.fragment_contenairer,fragment);
             fragmentTransaction.commit();
-            Toast.makeText(MainActivity.this, "Card", Toast.LENGTH_SHORT).show();
 
 
         return super.onOptionsItemSelected(item);
@@ -200,21 +231,23 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void initBase(){
+        cardLineRepo=new CardLineRepo(getApplicationContext());
+        List<ArticlePannier> articlePannierList = cardLineRepo.getCardLine();
+        DataBaseHelper bdd = new DataBaseHelper(this.getApplicationContext());
+
+
         if (new UtilService().checkNetwork(this)) {
             new GetFullProductTask(this).execute(getScreenDensity());
         } else {
             Toast.makeText(this, "Aucune connexion", Toast.LENGTH_SHORT).show();
         }
 
+
+
+
     }
 
-    public void AjouterPanier (View view)
-    {
-       //new GetDisponibiliteTask(this).execute(1,"bleu","XS", 2 );
 
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
-    }
 
     public String getScreenDensity() {
         DisplayMetrics metrics = new DisplayMetrics();

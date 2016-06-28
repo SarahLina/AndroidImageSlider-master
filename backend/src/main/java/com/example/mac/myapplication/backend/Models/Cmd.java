@@ -7,6 +7,15 @@ public class Cmd {
     private String nameCmd;
     private String date;
     private String etat;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getEtat() {
         return etat;

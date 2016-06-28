@@ -13,11 +13,14 @@ import Services.LoginTask;
 import Services.UpdateDispoTask;
 
 public class LoginActivity extends AppCompatActivity {
-
+    public static String username_current;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
     }
 
     public void login (View view)
@@ -25,11 +28,14 @@ public class LoginActivity extends AppCompatActivity {
         EditText username= (EditText)findViewById(R.id.username);
         EditText password= (EditText)findViewById(R.id.password);
 
-
         String user= username.getText().toString().trim();
+        username_current=user;
         String pass = password.getText().toString().trim();
 
 
         new LoginTask(this).execute(user,pass);
     }
+
+
+
 }

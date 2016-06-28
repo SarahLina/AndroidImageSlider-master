@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Valider"
-            android:id="@+id/button5"
+            android:id="@+id/ajouterAuPanier"
             android:drawableRight="@android:drawable/ic_menu_send"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"

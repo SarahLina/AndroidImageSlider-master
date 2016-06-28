@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mac.miniprojetpart1.R;
+import com.example.msia.julina.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ public class CmdFragment extends Fragment {
       //  listView.setAdapter(cutomAdapter);
 
         if (new UtilService().checkNetwork(getActivity())) {
-            new GetListCmdTask(getActivity()).execute(23);
+            new GetListCmdTask(getActivity()).execute(LoginActivity.username_current);
         } else {
             Toast.makeText(getActivity(), "Aucune connexion", Toast.LENGTH_SHORT).show();
         }

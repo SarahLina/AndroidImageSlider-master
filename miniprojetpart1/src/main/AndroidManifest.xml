@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
 
     <application
         android:allowBackup="true"
@@ -30,6 +32,16 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.msia.julina.LoginActivity"></activity>
+
+        <receiver android:name="com.example.msia.julina.AlaramReceiver"></receiver>
+
+        <receiver android:name="com.example.msia.julina.RestartReceiver" android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+
+        </receiver>
+
     </application>
 
 </manifest>

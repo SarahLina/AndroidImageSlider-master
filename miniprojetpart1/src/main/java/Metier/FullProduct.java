@@ -8,12 +8,24 @@ import org.json.JSONObject;
  * Created by mac on 26/06/16.
  */
 public class FullProduct {
+    int id_fullProduct;
     Product product;
     String size;
     String color;
     int quantity;//// quantite dipo
 
 
+    public int getId_fullProduct() {
+        return id_fullProduct;
+    }
+
+    public void setId_fullProduct(int id_fullProduct) {
+        this.id_fullProduct = id_fullProduct;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public Product getProduct() {
         return product;

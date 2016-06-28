@@ -38,6 +38,7 @@ import Metier.Product;
 import Repository.CardLineRepo;
 import Repository.FullProductRepo;
 import Repository.ProductRepo;
+import Services.UpdateDispoTask;
 
 
 public  class DetailFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
@@ -87,7 +88,9 @@ public  class DetailFragment extends Fragment implements BaseSliderView.OnSlider
                     fullProduct.setSize(spinnersize.getSelectedItem().toString());//
                     fullProduct.setColor(spinnercolor.getSelectedItem().toString());//spin-------
                     //fullProduct.setQuantity(quantite.getText().toString().);////parse in int
-                    cardLineRepo.addCardLineRepo(fullProduct,Integer.parseInt(quantite.getText().toString()));
+
+                    new UpdateDispoTask(getActivity()).execute(fullProduct.getProduct().getId_product(), fullProduct.getColor(), fullProduct.getSize(),Integer.parseInt(quantite.getText().toString()));
+                  //  cardLineRepo.addCardLineRepo(fullProduct,Integer.parseInt(quantite.getText().toString()));
 
                    // Intent intent = new Intent(null,MainActivity.class);
                     //startActivity(intent);
