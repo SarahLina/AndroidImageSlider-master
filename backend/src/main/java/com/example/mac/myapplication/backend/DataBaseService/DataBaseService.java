@@ -69,10 +69,10 @@ public class DataBaseService {
                     fullProducttmpt.setCategorie(rs.getString("category_product"));
                     fullProducttmpt.setTypeClient(rs.getString("client_product"));
                     fullProducttmpt.setName(rs.getString("name_product"));
-                    fullProducttmpt.setCover(Base64.encodeBase64String(rs.getBytes("iconcover")));
-                    fullProducttmpt.setCover1(Base64.encodeBase64String(rs.getBytes("iconcover1")));
-                    fullProducttmpt.setCover2(Base64.encodeBase64String(rs.getBytes("iconcover2")));
-                    fullProducttmpt.setCover3(Base64.encodeBase64String(rs.getBytes("iconcover3")));
+                 //   fullProducttmpt.setCover(Base64.encodeBase64String(rs.getBytes("iconcover")));
+                  //  fullProducttmpt.setCover1(Base64.encodeBase64String(rs.getBytes("iconcover1")));
+                  //  fullProducttmpt.setCover2(Base64.encodeBase64String(rs.getBytes("iconcover2")));
+                  //  fullProducttmpt.setCover3(Base64.encodeBase64String(rs.getBytes("iconcover3")));
 
                     fullProducttmpt.setColor(rs.getString("color"));
                     fullProducttmpt.setSize(rs.getString("size"));

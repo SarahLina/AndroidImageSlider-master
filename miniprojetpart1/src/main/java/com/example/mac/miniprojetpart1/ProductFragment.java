@@ -3,6 +3,7 @@ package com.example.mac.miniprojetpart1;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +89,7 @@ public class ProductFragment extends Fragment {
         if (Product.categorie_current.compareTo("Femmes")==0)
         {
             productList=productRepo.getProductsType("femme");
+            Log.i("taille", String.valueOf(productList.size()));
 
         }
         if (Product.categorie_current.compareTo("Hommes")==0){
@@ -103,6 +105,7 @@ public class ProductFragment extends Fragment {
             if (fullProductRepo.existColorProd("bleu", iProd.getId_product())) {
                 tabColor.add("bleu");
             }
+
             if (fullProductRepo.existColorProd("noir", iProd.getId_product())) {
                 tabColor.add("noir");
             }
@@ -172,7 +175,9 @@ public class ProductFragment extends Fragment {
             if (fullProductRepo.existSizesProd("25", iProd.getId_product())) {
                 tabSize.add("25");
             }
+
             iProd.setColors(tabColor);
+
             iProd.setSizes(tabSize);
         }
         }

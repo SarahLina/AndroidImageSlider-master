@@ -81,17 +81,21 @@ public class CustomAdapter extends BaseAdapter implements Filterable
             textSize.setText("Taille(s): " + size);
         }
     }
+
         // Récupérer la liste des tailles
         List<String> productcolor = productList.get(position).getColors();
         // Séparer la liste des tailles par une virgule
-        String color = productcolor.get(0);
-        listSize = productcolor.size();
-        if (listSize > 0) {
-            for (int i = 1; i < listSize; i++) {
-                color = color + ", " + productcolor.get(i);
+        if (productcolor.size() > 0) {
+            String color = productcolor.get(0);
+            listSize = productcolor.size();
+            if (listSize > 0) {
+                for (int i = 1; i < listSize; i++) {
+                    color = color + ", " + productcolor.get(i);
+                }
+                textColor.setText("Couleurs(s): " + color);
             }
-            textColor.setText("Couleurs(s): "+ color);
         }
+
 
         textPrice.setText("Prix: " + productList.get(position).getPrice());
         return convertView;

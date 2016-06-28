@@ -201,8 +201,7 @@ public class MainActivity extends AppCompatActivity
 
     public void initBase(){
         if (new UtilService().checkNetwork(this)) {
-            Toast.makeText(this,getScreenDensity(),Toast.LENGTH_LONG).show();
-          //  new GetFullProductTask(this).execute(getScreenDensity());
+            new GetFullProductTask(this).execute(getScreenDensity());
         } else {
             Toast.makeText(this, "Aucune connexion", Toast.LENGTH_SHORT).show();
         }

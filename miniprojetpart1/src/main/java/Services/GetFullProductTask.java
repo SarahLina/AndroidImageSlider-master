@@ -76,12 +76,14 @@ public class GetFullProductTask extends AsyncTask<Object,Void,String> {
     protected void onPostExecute(String s) {
         pd.dismiss();
         productRepo=new ProductRepo(this.context);
+        fullProductRepo = new FullProductRepo(this.context);
         List <FullProducttmp>  fullProductList=new ArrayList<>();
 
         if (!s.equals("")) {
 
             try {
                 JSONArray jsonArray = new JSONArray(s);
+                Log.i("message","la taille est de " +jsonArray.length());
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -97,17 +99,24 @@ public class GetFullProductTask extends AsyncTask<Object,Void,String> {
                     product.setTypeClient(jsonObject.get("typeClient").toString());
                     product.setName(jsonObject.get("name").toString());
                     product.setRef(jsonObject.get("ref").toString());
-                    product.setCover(jsonObject.get("cover").toString());
-                    product.setCover1(jsonObject.get("cover1").toString());
-                    product.setCover2(jsonObject.get("cover2").toString());
-                    product.setCover3(jsonObject.get("cover3").toString());
-                    product.setPrice((float) jsonObject.getDouble("price"));
+                 //   product.setCover(jsonObject.get("cover").toString());
+                 //   product.setCover1(jsonObject.get("cover1").toString());
+                 //   product.setCover2(jsonObject.get("cover2").toString());
+                 //   product.setCover3(jsonObject.get("cover3").toString());
+                 //   product.setPrice((float) jsonObject.getDouble("price"));
 
+                    if (productRepo.getProductsById(jsonObject.getInt("id_product")) == null)
                     productRepo.addProduct(product);
 
                     fullProduct.setProduct(product);
                     fullProduct.setColor(jsonObject.get("color").toString());
                     fullProduct.setSize(jsonObject.get("size").toString());
+
+                    String color= jsonObject.get("color").toString();
+                    String size = jsonObject.get("size").toString();
+                    int id= jsonObject.getInt("id_product");
+
+                    if ( (fullProductRepo.existColorProd(color, id)== false ) && (fullProductRepo.existSizesProd(size, id) == false))
                     fullProductRepo.addFullProduct(jsonObject.getInt("id_product"),jsonObject.get("color").toString(),jsonObject.get("size").toString());
 
 

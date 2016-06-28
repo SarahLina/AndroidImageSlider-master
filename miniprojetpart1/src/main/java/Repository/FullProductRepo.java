@@ -101,6 +101,8 @@ public class FullProductRepo {
         }
 
     }
+
+
 /*
     public List<FullProduct> getFullProduct(String client){
         List<FullProduct>  listFullProduct = new ArrayList<>();
