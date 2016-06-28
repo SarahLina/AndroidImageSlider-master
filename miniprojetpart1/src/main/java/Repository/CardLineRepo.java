@@ -74,11 +74,16 @@ public class CardLineRepo   {
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("quantity_line_card",qte);
-        db.update("Product",contentValues,"where id_product=?",new String[]{id_prod});
+        db.update("Card_line",contentValues," id_line_card=?",new String[]{id_prod});
         db.close();
 
     }
+    public void  deleteLine(int id_prod_full,int qte) {
+        SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
+        db.delete("Card_line"," id_fullKey=? and quantity_line_card=?",new String[]{String.valueOf(id_prod_full),String.valueOf(qte)});
+        db.close();
 
+    }
 
 
 

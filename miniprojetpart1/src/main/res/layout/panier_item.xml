@@ -92,9 +92,8 @@
                 android:id="@+id/moins"
                 android:elevation="5dp"
                 android:src="@android:drawable/ic_menu_add"
-                android:background="@drawable/bird"
-
                 />
+                <!--android:background="@drawable/bird"-->
 
 
             <TextView
@@ -113,12 +112,13 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="15dp"
-                android:text="New Button"
-                android:id="@+id/delete"
+                android:text="btnPlus"
+                android:id="@+id/btnPlus"
                 android:elevation="5dp"
                 android:src="@android:drawable/ic_menu_more"
-                android:background="@drawable/bird" />
 
+                />
+                <!--android:background="@drawable/bird"-->
             </LinearLayout>
 
             <Button style="@style/AppTheme"
@@ -128,12 +128,13 @@
                 android:layout_marginBottom="3dp"
                 android:text="Supprimer"
                 android:textColor="#ffffff"
-                android:id="@+id/plus"
+                android:id="@+id/supprimer"
                 android:elevation="5dp"
                 android:drawableLeft="@android:drawable/presence_offline"
                 android:background="@drawable/myrect"
                 android:paddingRight="5dp"
                 android:paddingLeft="5dp"/>
+
 
         </LinearLayout>
 
