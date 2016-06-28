@@ -3,6 +3,7 @@ package com.example.mac.myapplication.backend.DataBaseService;
 import com.example.mac.myapplication.backend.Models.Cmd;
 import com.example.mac.myapplication.backend.Models.Cmd_line;
 import com.example.mac.myapplication.backend.Models.FullProduct;
+import com.example.mac.myapplication.backend.Models.FullProducttmp;
 import com.example.mac.myapplication.backend.Models.ObjectCard;
 import com.example.mac.myapplication.backend.Models.Product;
 import com.example.mac.myapplication.backend.Models.User;
@@ -45,9 +46,9 @@ public class DataBaseService {
         return con;
     }
 
-    public List<FullProduct> getListFullProduct(String density)
+    public List<FullProducttmp> getListFullProduct(String density)
     {
-        List<FullProduct> listProducts = new ArrayList<FullProduct>();
+        List<FullProducttmp> listProducts = new ArrayList<FullProducttmp>();
         Connection conn = null;
         PreparedStatement pst = null;
 
@@ -61,25 +62,22 @@ public class DataBaseService {
 
             if (rs.first()) {
                 while (!rs.isAfterLast()) {
-                    FullProduct fullProduct= new FullProduct();
-                    Product product = new Product();
-                    product.setId_product(rs.getInt("id_product"));
-                    product.setRef(rs.getString("ref_product"));
-                    product.setPrice(rs.getFloat("price_product"));
-                    product.setCategory(rs.getString("category_product"));
-                    product.setClient(rs.getString("client_product"));
-                    product.setName(rs.getString("name_product"));
-                    product.setCover(Base64.encodeBase64String(rs.getBytes("iconcover")));
-                    product.setCover1(Base64.encodeBase64String(rs.getBytes("iconcover1")));
-                    product.setCover2(Base64.encodeBase64String(rs.getBytes("iconcover2")));
-                    product.setCover3(Base64.encodeBase64String(rs.getBytes("iconcover3")));
+                    FullProducttmp fullProducttmpt= new FullProducttmp();
+                    fullProducttmpt.setId_product(rs.getInt("id_product"));
+                    fullProducttmpt.setRef(rs.getString("ref_product"));
+                    fullProducttmpt.setPrice(rs.getFloat("price_product"));
+                    fullProducttmpt.setCategorie(rs.getString("category_product"));
+                    fullProducttmpt.setTypeClient(rs.getString("client_product"));
+                    fullProducttmpt.setName(rs.getString("name_product"));
+                    fullProducttmpt.setCover(Base64.encodeBase64String(rs.getBytes("iconcover")));
+                    fullProducttmpt.setCover1(Base64.encodeBase64String(rs.getBytes("iconcover1")));
+                    fullProducttmpt.setCover2(Base64.encodeBase64String(rs.getBytes("iconcover2")));
+                    fullProducttmpt.setCover3(Base64.encodeBase64String(rs.getBytes("iconcover3")));
 
-                    fullProduct.setProduct(product);
-                    fullProduct.setColor(rs.getString("color"));
-                    fullProduct.setSize(rs.getString("size"));
-                    fullProduct.setQuantity(rs.getInt("quantity"));
+                    fullProducttmpt.setColor(rs.getString("color"));
+                    fullProducttmpt.setSize(rs.getString("size"));
 
-                    listProducts.add(fullProduct);
+                    listProducts.add(fullProducttmpt);
                     rs.next();
                 }
             }

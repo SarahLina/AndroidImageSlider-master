@@ -26,6 +26,7 @@ public class ProductRepo {
     public void addProduct(Product product){
         db = dataBaseHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put("id_product",product.getId_product());
         contentValues.put("name_product",product.getName());
         contentValues.put("price_product",product.getPrice());
         contentValues.put("e_client_product",product.getTypeClient());

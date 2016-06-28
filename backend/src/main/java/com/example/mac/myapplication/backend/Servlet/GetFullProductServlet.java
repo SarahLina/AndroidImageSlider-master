@@ -2,6 +2,7 @@ package com.example.mac.myapplication.backend.Servlet;
 
 import com.example.mac.myapplication.backend.DataBaseService.DataBaseService;
 import com.example.mac.myapplication.backend.Models.FullProduct;
+import com.example.mac.myapplication.backend.Models.FullProducttmp;
 import com.example.mac.myapplication.backend.Models.Product;
 import com.google.gson.Gson;
 
@@ -22,7 +23,7 @@ public class GetFullProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String density=req.getParameter("density");
-        List<FullProduct> fullProductList = new DataBaseService().getListFullProduct(density);
+        List<FullProducttmp> fullProductList = new DataBaseService().getListFullProduct(density);
         resp.getWriter().write(new Gson().toJson(fullProductList));
     }
 }

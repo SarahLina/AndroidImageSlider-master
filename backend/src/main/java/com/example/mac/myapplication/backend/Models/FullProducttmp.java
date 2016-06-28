@@ -1,4 +1,4 @@
-package Metier;
+package com.example.mac.myapplication.backend.Models;
 
 /**
  * Created by mac on 27/06/16.

@@ -2,6 +2,8 @@ package Metier;
 
 import android.content.Context;
 
+import org.json.JSONObject;
+
 /**
  * Created by mac on 26/06/16.
  */
@@ -44,4 +46,6 @@ public class FullProduct {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+
 }

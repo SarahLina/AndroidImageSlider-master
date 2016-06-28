@@ -70,6 +70,7 @@ public  class DetailFragment extends Fragment implements BaseSliderView.OnSlider
              this.spinnersize= (Spinner) view.findViewById(R.id.taillespiner);
              this.spinnercolor= (Spinner) view.findViewById(R.id.couleurspinner);
             this.quantite = (EditText) view.findViewById(R.id.quantite);
+
             final Button ajouter = (Button) view.findViewById(R.id.ajouter);
            // Intent intent = new Intent(null,MainActivity.class);
             ajouter.setOnClickListener(new View.OnClickListener()

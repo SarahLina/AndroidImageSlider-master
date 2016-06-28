@@ -3,9 +3,13 @@ package Services;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -17,6 +21,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import Metier.FullProduct;
+import Metier.FullProducttmp;
+import Metier.Product;
+import Repository.FullProductRepo;
 import Repository.ProductRepo;
 
 /**
@@ -26,6 +33,11 @@ public class GetFullProductTask extends AsyncTask<Object,Void,String> {
         private Context context;
         ProgressDialog pd;
         ProductRepo productRepo;
+        FullProductRepo fullProductRepo;
+
+    public GetFullProductTask(Context context) {
+        this.context = context;
+    }
 
     @Override
     protected void onPreExecute() {
@@ -41,12 +53,12 @@ public class GetFullProductTask extends AsyncTask<Object,Void,String> {
         StringBuilder result = new StringBuilder();
         String data;
         try {
-            URL url = new URL("http://192.168.1.6:8080/GetFullProduct?density="+params[0]);
+            URL url = new URL("http://192.168.1.11:8080/GetFullProduct?density="+params[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             // Attendre 5 secondes max pour établir la connexion
             conn.setConnectTimeout(5000);
             // Attendre 1 minute max pour lire les données
-            conn.setReadTimeout(60000);
+            conn.setReadTimeout(600000);
             if (conn.getResponseCode()==200) {
                 InputStream is = conn.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
@@ -64,15 +76,47 @@ public class GetFullProductTask extends AsyncTask<Object,Void,String> {
     protected void onPostExecute(String s) {
         pd.dismiss();
         productRepo=new ProductRepo(this.context);
+        List <FullProducttmp>  fullProductList=new ArrayList<>();
+
         if (!s.equals("")) {
 
-            List <FullProduct>  fullProductList=new ArrayList<>();
-            FullProduct[] fullProducts= new Gson().fromJson(s, FullProduct[].class);
-            fullProductList = Arrays.asList(fullProducts);
+            try {
+                JSONArray jsonArray = new JSONArray(s);
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    FullProducttmp fullProducttmp = new FullProducttmp();
 
 
-            //Enregistrement dans la base
+                    Product product = new Product();
+                    FullProduct fullProduct= new FullProduct();
 
+
+                    product.setId_product(jsonObject.getInt("id_product"));
+                    product.setCategorie(jsonObject.get("categorie").toString());
+                    product.setTypeClient(jsonObject.get("typeClient").toString());
+                    product.setName(jsonObject.get("name").toString());
+                    product.setRef(jsonObject.get("ref").toString());
+                    product.setCover(jsonObject.get("cover").toString());
+                    product.setCover1(jsonObject.get("cover1").toString());
+                    product.setCover2(jsonObject.get("cover2").toString());
+                    product.setCover3(jsonObject.get("cover3").toString());
+                    product.setPrice((float) jsonObject.getDouble("price"));
+
+                    productRepo.addProduct(product);
+
+                    fullProduct.setProduct(product);
+                    fullProduct.setColor(jsonObject.get("color").toString());
+                    fullProduct.setSize(jsonObject.get("size").toString());
+                    fullProductRepo.addFullProduct(jsonObject.getInt("id_product"),jsonObject.get("color").toString(),jsonObject.get("size").toString());
+
+
+                }
+
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
         }

@@ -87,7 +87,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     ///// query
     public static final String PRODUCT_TABLE_NAME_TABLE_NAME =
             "CREATE TABLE " + PRODUCT_TABLE_NAME + " (" +
-                    PRODUCT_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    PRODUCT_KEY + " INTEGER PRIMARY KEY, " +
                     PRODUCT_NAME+" TEXT," +
                     PRODUCT_CLIENT+ " TEXT, "+
                     PRODUCT_CATEGORY+ " TEXT, "+
